@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Healer.swift
 //  SwiftGame
 //
 //  Created by Jerome Krakus on 18/05/2018.
@@ -8,5 +8,4 @@
 
 import Foundation
 
-print("Hello, World!")
 

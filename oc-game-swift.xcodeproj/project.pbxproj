@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		7F65133620AEEF60001AC156 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65133520AEEF60001AC156 /* main.swift */; };
+		7F65133E20AEF049001AC156 /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65133D20AEF049001AC156 /* Axe.swift */; };
+		7F65134120AEFFB4001AC156 /* HeroType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134020AEFFB4001AC156 /* HeroType.swift */; };
+		7F65134320AEFFD6001AC156 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134220AEFFD6001AC156 /* Hero.swift */; };
+		7F65134520AEFFED001AC156 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134420AEFFED001AC156 /* Fighter.swift */; };
+		7F65134720AF000A001AC156 /* Healer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134620AF000A001AC156 /* Healer.swift */; };
+		7F65134920AF0044001AC156 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134820AF0044001AC156 /* Dwarf.swift */; };
+		7F65134B20AF006A001AC156 /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134A20AF006A001AC156 /* Colossus.swift */; };
+		7F65134F20AF00AE001AC156 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65134E20AF00AE001AC156 /* Player.swift */; };
+		7F65135120AF00CF001AC156 /* Sword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135020AF00CF001AC156 /* Sword.swift */; };
+		7F65135320AF00E7001AC156 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135220AF00E7001AC156 /* Shield.swift */; };
+		7F65135520AF00F2001AC156 /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135420AF00F2001AC156 /* Staff.swift */; };
+		7F65135820AF0115001AC156 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135720AF0115001AC156 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +37,18 @@
 /* Begin PBXFileReference section */
 		7F65133220AEEF60001AC156 /* SwiftGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F65133520AEEF60001AC156 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7F65133D20AEF049001AC156 /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
+		7F65134020AEFFB4001AC156 /* HeroType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroType.swift; sourceTree = "<group>"; };
+		7F65134220AEFFD6001AC156 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		7F65134420AEFFED001AC156 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		7F65134620AF000A001AC156 /* Healer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Healer.swift; sourceTree = "<group>"; };
+		7F65134820AF0044001AC156 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
+		7F65134A20AF006A001AC156 /* Colossus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colossus.swift; sourceTree = "<group>"; };
+		7F65134E20AF00AE001AC156 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7F65135020AF00CF001AC156 /* Sword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sword.swift; sourceTree = "<group>"; };
+		7F65135220AF00E7001AC156 /* Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
+		7F65135420AF00F2001AC156 /* Staff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
+		7F65135720AF0115001AC156 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +82,52 @@
 			isa = PBXGroup;
 			children = (
 				7F65133520AEEF60001AC156 /* main.swift */,
+				7F65135620AF0103001AC156 /* Game */,
+				7F65134D20AF009B001AC156 /* Players */,
+				7F65133F20AEFD4A001AC156 /* Heroes */,
+				7F65133C20AEEFCE001AC156 /* Weapons */,
 			);
 			path = SwiftGame;
+			sourceTree = "<group>";
+		};
+		7F65133C20AEEFCE001AC156 /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				7F65133D20AEF049001AC156 /* Axe.swift */,
+				7F65135020AF00CF001AC156 /* Sword.swift */,
+				7F65135220AF00E7001AC156 /* Shield.swift */,
+				7F65135420AF00F2001AC156 /* Staff.swift */,
+			);
+			path = Weapons;
+			sourceTree = "<group>";
+		};
+		7F65133F20AEFD4A001AC156 /* Heroes */ = {
+			isa = PBXGroup;
+			children = (
+				7F65134020AEFFB4001AC156 /* HeroType.swift */,
+				7F65134220AEFFD6001AC156 /* Hero.swift */,
+				7F65134420AEFFED001AC156 /* Fighter.swift */,
+				7F65134620AF000A001AC156 /* Healer.swift */,
+				7F65134820AF0044001AC156 /* Dwarf.swift */,
+				7F65134A20AF006A001AC156 /* Colossus.swift */,
+			);
+			path = Heroes;
+			sourceTree = "<group>";
+		};
+		7F65134D20AF009B001AC156 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				7F65134E20AF00AE001AC156 /* Player.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		7F65135620AF0103001AC156 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				7F65135720AF0115001AC156 /* Game.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +187,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F65133E20AEF049001AC156 /* Axe.swift in Sources */,
+				7F65134520AEFFED001AC156 /* Fighter.swift in Sources */,
+				7F65134720AF000A001AC156 /* Healer.swift in Sources */,
+				7F65135820AF0115001AC156 /* Game.swift in Sources */,
+				7F65134120AEFFB4001AC156 /* HeroType.swift in Sources */,
+				7F65135320AF00E7001AC156 /* Shield.swift in Sources */,
+				7F65134B20AF006A001AC156 /* Colossus.swift in Sources */,
+				7F65135520AF00F2001AC156 /* Staff.swift in Sources */,
+				7F65135120AF00CF001AC156 /* Sword.swift in Sources */,
 				7F65133620AEEF60001AC156 /* main.swift in Sources */,
+				7F65134920AF0044001AC156 /* Dwarf.swift in Sources */,
+				7F65134F20AF00AE001AC156 /* Player.swift in Sources */,
+				7F65134320AEFFD6001AC156 /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
