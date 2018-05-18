@@ -35,7 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7F65133220AEEF60001AC156 /* SwiftGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftGame; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F65133220AEEF60001AC156 /* oc-game-swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "oc-game-swift"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F65133520AEEF60001AC156 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7F65133D20AEF049001AC156 /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
 		7F65134020AEFFB4001AC156 /* HeroType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroType.swift; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		7F65132920AEEF60001AC156 = {
 			isa = PBXGroup;
 			children = (
-				7F65133420AEEF60001AC156 /* SwiftGame */,
+				7F65133420AEEF60001AC156 /* oc-game-swift */,
 				7F65133320AEEF60001AC156 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,12 +73,12 @@
 		7F65133320AEEF60001AC156 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7F65133220AEEF60001AC156 /* SwiftGame */,
+				7F65133220AEEF60001AC156 /* oc-game-swift */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7F65133420AEEF60001AC156 /* SwiftGame */ = {
+		7F65133420AEEF60001AC156 /* oc-game-swift */ = {
 			isa = PBXGroup;
 			children = (
 				7F65133520AEEF60001AC156 /* main.swift */,
@@ -87,7 +87,7 @@
 				7F65133F20AEFD4A001AC156 /* Heroes */,
 				7F65133C20AEEFCE001AC156 /* Weapons */,
 			);
-			path = SwiftGame;
+			path = "oc-game-swift";
 			sourceTree = "<group>";
 		};
 		7F65133C20AEEFCE001AC156 /* Weapons */ = {
@@ -133,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7F65133120AEEF60001AC156 /* SwiftGame */ = {
+		7F65133120AEEF60001AC156 /* oc-game-swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F65133920AEEF60001AC156 /* Build configuration list for PBXNativeTarget "SwiftGame" */;
+			buildConfigurationList = 7F65133920AEEF60001AC156 /* Build configuration list for PBXNativeTarget "oc-game-swift" */;
 			buildPhases = (
 				7F65132E20AEEF60001AC156 /* Sources */,
 				7F65132F20AEEF60001AC156 /* Frameworks */,
@@ -145,9 +145,9 @@
 			);
 			dependencies = (
 			);
-			name = SwiftGame;
+			name = "oc-game-swift";
 			productName = SwiftGame;
-			productReference = 7F65133220AEEF60001AC156 /* SwiftGame */;
+			productReference = 7F65133220AEEF60001AC156 /* oc-game-swift */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -165,7 +165,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7F65132D20AEEF60001AC156 /* Build configuration list for PBXProject "SwiftGame" */;
+			buildConfigurationList = 7F65132D20AEEF60001AC156 /* Build configuration list for PBXProject "oc-game-swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -177,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7F65133120AEEF60001AC156 /* SwiftGame */,
+				7F65133120AEEF60001AC156 /* oc-game-swift */,
 			);
 		};
 /* End PBXProject section */
@@ -340,7 +340,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7F65132D20AEEF60001AC156 /* Build configuration list for PBXProject "SwiftGame" */ = {
+		7F65132D20AEEF60001AC156 /* Build configuration list for PBXProject "oc-game-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F65133720AEEF60001AC156 /* Debug */,
@@ -349,7 +349,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F65133920AEEF60001AC156 /* Build configuration list for PBXNativeTarget "SwiftGame" */ = {
+		7F65133920AEEF60001AC156 /* Build configuration list for PBXNativeTarget "oc-game-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F65133A20AEEF60001AC156 /* Debug */,

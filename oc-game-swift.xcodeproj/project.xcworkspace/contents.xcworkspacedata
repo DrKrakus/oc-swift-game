@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SwiftGame.xcodeproj">
+      location = "self:/Users/noox/Desktop/OpenClassrooms/Jeu vide&#x301;o swift/oc-swift-game/oc-game-swift.xcodeproj">
    </FileRef>
 </Workspace>
