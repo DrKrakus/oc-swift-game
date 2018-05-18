@@ -8,3 +8,11 @@
 
 import Foundation
 
+// Create the Hero class
+class Hero {
+    var heroName: String
+    
+    init(heroName: String) {
+        self.heroName = heroName
+    }
+}

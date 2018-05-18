@@ -8,4 +8,6 @@
 
 import Foundation
 
-
+// Fighter class
+class Fighter: Hero {
+}

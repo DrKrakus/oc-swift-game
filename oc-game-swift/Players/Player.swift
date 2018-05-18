@@ -8,3 +8,12 @@
 
 import Foundation
 
+// Create the Player class
+class Player {
+    var playerName: String
+    var heroTeam = [Hero]()
+    
+    init(playerName: String) {
+        self.playerName = playerName
+    }
+}

@@ -8,3 +8,6 @@
 
 import Foundation
 
+// Dwarf class
+class Dwarf: Hero {
+}
