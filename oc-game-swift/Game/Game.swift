@@ -12,9 +12,10 @@ import Foundation
 class Game {
     static var playerList = [Player]()
     
-    // Welcome Menu
+    // MARK: - Welcome Menu
     static func start() {
-        print("SWIFT TO THE DEATH"
+        print("\n----------------------"
+            + "\nSWIFT TO THE DEATH"
             + "\n----------------------"
             + "\n"
             + "\n Select an option"
@@ -36,12 +37,13 @@ class Game {
         
     }
     
-    // Show credits
+    // MARK: - Show credits
     static func showCredits() {
         print("This awesome game is developped by Jérôme Krakus !")
+        Game.start()
     }
     
-    // Create players
+    // MARK: Create players
     static func createPlayers() {
         // While there is no 2 players for the game
         while Game.playerList.count < 2 {
@@ -64,13 +66,15 @@ class Game {
         
     }
     
-    // Mark : - Hero selection
+    // MARK: - Hero selection
     static func pickAHeroMenu() {
         // Each player choose 3 heroes
         for player in Game.playerList {
             // While one player doesnt have 3 hero
             while player.heroTeam.count < 3 {
-                print("\(player.playerName) choose \(3 - player.heroTeam.count) heroes"
+                print("-----------------------------------"
+                    + "\n\(player.playerName) choose \(3 - player.heroTeam.count) heroes"
+                    + "\n-----------------------------------"
                     + "\n 1. Fighter - Basic, strong, your best friend here"
                     + "\n 2. Healer - You should really think about him for your team"
                     + "\n 3. Dwarf - Fearless and powerfull, but weak too"
@@ -107,6 +111,26 @@ class Game {
         
         //Both teams are ready to fight!
         print("Both teams are ready, prepare to fight!")
+        fightMenu()
+        
         
     }
+    
+    // MAARK: - Fight menu
+    static func fightMenu() {
+        // Display teams
+        for player in Game.playerList {
+            print("-----------------------------------"
+                + "\n-----------------------------------"
+                + "\nThis is the team of \(player.playerName)"
+                + "\n-----------------------------------"
+                + "\n-----------------------------------"
+                + "\n1. \(player.heroTeam[0].heroName) is a \(player.heroTeam[0].heroType)"
+                + "\n-----------------------------------"
+                + "\n2. \(player.heroTeam[1].heroName) is a \(player.heroTeam[1].heroType)"
+                + "\n-----------------------------------"
+                + "\n3. \(player.heroTeam[1].heroName) is a \(player.heroTeam[1].heroType)")
+        }
+    }
+    
 }

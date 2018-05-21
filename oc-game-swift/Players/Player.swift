@@ -27,7 +27,9 @@ class Player {
         // While the picked hero is not create
         while heroWasCreated == false {
             // Asking for name
-            print("Name your \(choice)")
+            print("-----------------------------------"
+                + "\nName your \(choice)"
+                + "\n-----------------------------------")
             // Read the answer
             if let name = readLine(){
                 // If the name is not empty, add the hero to team
@@ -44,7 +46,7 @@ class Player {
                         player.heroTeam.append(Colossus(heroName: name, heroType: .colossus))
                     }
                     // Print that all is good
-                    print("The \(choice) \(name) has been added to the team of \(player.playerName)")
+                    print("Your \(choice) \(name) has been added to your team")
                     // Turn the check on true
                     heroWasCreated = true
                 } else {
