@@ -92,7 +92,7 @@ class Game {
                             Player.createHero(player: player, choice: HeroType.colossus)
                         default:
                             // if the choice is not
-                            print("Sorry, are you... Retarded? 😬")
+                            print("Sorry, are you... 😬")
                         }
                     } else {
                         print("Hey ! You must choose a hero!")
@@ -106,7 +106,7 @@ class Game {
         }
         
         //Both teams are ready to fight!
-        print("Prepare to fight!")
+        print("Both teams are ready, prepare to fight!")
         
     }
 }

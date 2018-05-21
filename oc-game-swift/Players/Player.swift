@@ -53,8 +53,6 @@ class Player {
                 }
             }
         }
-        // Return to the hero menu
-        Game.pickAHeroMenu()
     }
     
     
