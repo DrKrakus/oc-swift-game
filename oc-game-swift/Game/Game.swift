@@ -68,25 +68,30 @@ class Game {
     static func pickAHeroMenu() {
         // Each player choose 3 heroes
         for player in Game.playerList {
+            // While one player doesnt have 3 hero
             while player.heroTeam.count < 3 {
                 print("\(player.playerName) choose \(3 - player.heroTeam.count) heroes"
                     + "\n 1. Fighter - Basic, strong, your best friend here"
                     + "\n 2. Healer - You should really think about him for your team"
                     + "\n 3. Dwarf - Fearless and powerfull, but weak too"
                     + "\n 4. Colossus - Tanky as fuck, but make less damage than your little sister")
+                
                 // Check the awnser
                 if let choice = readLine() {
+                    // If the name is correct
                     if choice != "" {
+                        // Read the choice
                         switch choice {
                         case "1":
-                            Game.createHero(player: player, choice: "Fighter")
+                            Player.createHero(player: player, choice: HeroType.fighter)
                         case "2":
-                            Game.createHero(player: player, choice: "Healer")
+                            Player.createHero(player: player, choice: HeroType.healer)
                         case "3":
-                            Game.createHero(player: player, choice: "Dwarf")
+                            Player.createHero(player: player, choice: HeroType.dwarf)
                         case "4":
-                            Game.createHero(player: player, choice: "Colossus")
+                            Player.createHero(player: player, choice: HeroType.colossus)
                         default:
+                            // if the choice is not
                             print("Sorry, are you... Retarded? 😬")
                         }
                     } else {
@@ -95,21 +100,13 @@ class Game {
                 }
             }
             
-            print("The teams are ready to fight !")
+            // The player's team is ready !
+            print("The team of \(player.playerName) is ready!")
             
         }
+        
+        //Both teams are ready to fight!
+        print("Prepare to fight!")
+        
     }
-    
-    static func createHero(player: Player, choice: String) {
-        print("Name your \(choice)")
-        if let name = readLine(){
-            if name != "" {
-                print("Your \(choice) = \(name)")
-            } else {
-                print("Srsly? Everytime? Choose a name...")
-            }
-        }
-        Game.pickAHeroMenu()
-    }
-    
 }

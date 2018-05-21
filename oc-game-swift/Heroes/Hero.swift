@@ -11,8 +11,10 @@ import Foundation
 // Create the Hero class
 class Hero {
     var heroName: String
+    var heroType: HeroType
     
-    init(heroName: String) {
+    init(heroName: String, heroType: HeroType) {
         self.heroName = heroName
+        self.heroType = heroType
     }
 }
