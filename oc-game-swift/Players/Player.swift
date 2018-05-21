@@ -11,13 +11,13 @@ import Foundation
 // Create the Player class
 class Player {
     // Player name
-    var playerName: String
+    var name: String
     // Player's team
-    var heroTeam = [Hero]()
+    var heroTeam: [Hero] = []
     
     // Init with name
-    init(playerName: String) {
-        self.playerName = playerName
+    init(name: String) {
+        self.name = name
     }
     
     // Create a hero
@@ -33,7 +33,7 @@ class Player {
             // Read the answer
             if let name = readLine(){
                 // If the name is not empty, add the hero to team
-                if name != "" {
+                if !name.isEmpty {
                     // Switch for the type of hero
                     switch choice {
                     case .fighter:
@@ -55,7 +55,6 @@ class Player {
                 }
             }
         }
-        return
     }
     
     

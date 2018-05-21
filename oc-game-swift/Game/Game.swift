@@ -10,7 +10,8 @@ import Foundation
 
 // Create the Game class
 class Game {
-    static var playerList = [Player]()
+    static var playerList: [Player] = []
+    static let maxPlayers = 2
     
     // MARK: - Welcome Menu
     static func start() {
@@ -45,16 +46,16 @@ class Game {
     
     // MARK: Create players
     static func createPlayers() {
-        // While there is no 2 players for the game
-        while Game.playerList.count < 2 {
+        // While there is no all the players for the game
+        while Game.playerList.count < Game.maxPlayers {
             print("---------------------------------------------------"
                 + "\nChoose your name player \(Game.playerList.count + 1)"
                 + "\n---------------------------------------------------")
             // Read the name of player
             if let name = readLine(){
-                if name != "" {
+                if !name.isEmpty {
                     // If the name is not empty, create and add player to the game
-                    Game.playerList.append(Player(playerName: name))
+                    Game.playerList.append(Player(name: name))
                 } else {
                     // If not
                     print("Dont be like that... Choose a name 🙃")
@@ -73,7 +74,7 @@ class Game {
             // While one player doesnt have 3 hero
             while player.heroTeam.count < 3 {
                 print("-----------------------------------"
-                    + "\n\(player.playerName) choose \(3 - player.heroTeam.count) heroes"
+                    + "\n\(player.name) choose \(3 - player.heroTeam.count) heroes"
                     + "\n-----------------------------------"
                     + "\n 1. Fighter - Basic, strong, your best friend here"
                     + "\n 2. Healer - You should really think about him for your team"
@@ -83,7 +84,7 @@ class Game {
                 // Check the awnser
                 if let choice = readLine() {
                     // If the name is correct
-                    if choice != "" {
+                    if !choice.isEmpty {
                         // Read the choice
                         switch choice {
                         case "1":
@@ -105,32 +106,14 @@ class Game {
             }
             
             // The player's team is ready !
-            print("The team of \(player.playerName) is ready!")
+            print("The team of \(player.name) is ready!")
             
         }
         
         //Both teams are ready to fight!
         print("Both teams are ready, prepare to fight!")
-        fightMenu()
         
         
-    }
-    
-    // MAARK: - Fight menu
-    static func fightMenu() {
-        // Display teams
-        for player in Game.playerList {
-            print("-----------------------------------"
-                + "\n-----------------------------------"
-                + "\nThis is the team of \(player.playerName)"
-                + "\n-----------------------------------"
-                + "\n-----------------------------------"
-                + "\n1. \(player.heroTeam[0].heroName) is a \(player.heroTeam[0].heroType)"
-                + "\n-----------------------------------"
-                + "\n2. \(player.heroTeam[1].heroName) is a \(player.heroTeam[1].heroType)"
-                + "\n-----------------------------------"
-                + "\n3. \(player.heroTeam[1].heroName) is a \(player.heroTeam[1].heroType)")
-        }
     }
     
 }
