@@ -8,13 +8,17 @@
 
 import Foundation
 
-// Create the Hero class
+// MARK: - Create the Hero class
 class Hero {
-    var heroName: String
-    var heroType: HeroType
+    // MARK: Properties
+    // Name of the hero
+    var name: String
+    // Type of the hero
+    var type: HeroType
     
-    init(heroName: String, heroType: HeroType) {
-        self.heroName = heroName
-        self.heroType = heroType
+    // MARK: - Init
+    init(name: String, type: HeroType) {
+        self.name = name
+        self.type = type
     }
 }

@@ -8,18 +8,22 @@
 
 import Foundation
 
-// Create the Player class
+// MARK: - Create the Player class
 class Player {
+    // MARK: - Properties
     // Player name
     var name: String
     // Player's team
     var heroTeam: [Hero] = []
+    // Max heroes per team
+    let maxHeroes = 3
     
-    // Init with name
+    // MARK: - Init
     init(name: String) {
         self.name = name
     }
     
+    // MARK: - Methods
     // Create a hero
     static func createHero(player: Player, choice: HeroType) {
         // A check for hero creation
@@ -34,30 +38,33 @@ class Player {
             if let name = readLine(){
                 // If the name is not empty, add the hero to team
                 if !name.isEmpty {
-                    // Switch for the type of hero
+                    // Switch for the type of hero to add
                     switch choice {
                     case .fighter:
-                        player.heroTeam.append(Fighter(heroName: name, heroType: .fighter))
+                        // Add a Fighter
+                        player.heroTeam.append(Fighter(name: name, type: .fighter))
                     case .healer:
-                        player.heroTeam.append(Healer(heroName: name, heroType: .healer))
+                        // Add a Healer
+                        player.heroTeam.append(Healer(name: name, type: .healer))
                     case .dwarf:
-                        player.heroTeam.append(Dwarf(heroName: name, heroType: .dwarf))
+                        // Add a Dwarf
+                        player.heroTeam.append(Dwarf(name: name, type: .dwarf))
                     case .colossus:
-                        player.heroTeam.append(Colossus(heroName: name, heroType: .colossus))
+                        // Add a Colossus
+                        player.heroTeam.append(Colossus(name: name, type: .colossus))
                     }
                     // Print that all is good
                     print("Your \(choice) \(name) has been added to your team")
                     // Turn the check on true
                     heroWasCreated = true
+                    
                 } else {
                     // If the name is empty
                     print("Srsly? Everytime? Choose a name...")
+                    
                 }
             }
         }
     }
-    
-    
-    
     
 }

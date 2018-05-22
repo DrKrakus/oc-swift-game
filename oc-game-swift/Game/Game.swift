@@ -8,13 +8,18 @@
 
 import Foundation
 
-// Create the Game class
+// MARK: - Create the Game class
 class Game {
+    // MARK: Properties
+    // Array of players
     static var playerList: [Player] = []
+    // The maximum of players per game
     static let maxPlayers = 2
     
-    // MARK: - Welcome Menu
+    // MARK: - Methods
+    // Start menu
     static func start() {
+        
         print("\n----------------------"
             + "\nSWIFT TO THE DEATH"
             + "\n----------------------"
@@ -23,6 +28,7 @@ class Game {
             + "\n"
             + "\n1. Start New Game"
             + "\n2. Credits")
+        
         // If options 1 or 2 are choosen
         if let line = readLine(){
             switch line{
@@ -32,19 +38,21 @@ class Game {
                 Game.showCredits()
             default: // If not
                 print("You have to choose 1 or 2 😅")
+                // Replay the start menu
                 Game.start()
             }
         }
         
     }
     
-    // MARK: - Show credits
+    // Show credits
     static func showCredits() {
         print("This awesome game is developped by Jérôme Krakus !")
+        // Return to the start menu
         Game.start()
     }
     
-    // MARK: Create players
+    // Create players
     static func createPlayers() {
         // While there is no all the players for the game
         while Game.playerList.count < Game.maxPlayers {
@@ -57,22 +65,23 @@ class Game {
                     // If the name is not empty, create and add player to the game
                     Game.playerList.append(Player(name: name))
                 } else {
-                    // If not
+                    // If empty
                     print("Dont be like that... Choose a name 🙃")
                 }
             }
         }
-        // When 2 players are created
+        // When all the players are created, go to the hero selection
         pickAHeroMenu()
         
     }
     
-    // MARK: - Hero selection
+    // Hero selection menu
     static func pickAHeroMenu() {
-        // Each player choose 3 heroes
+        // Each player choose their heroes
         for player in Game.playerList {
-            // While one player doesnt have 3 hero
-            while player.heroTeam.count < 3 {
+            // While one player doesnt have all their heroes
+            while player.heroTeam.count < player.maxHeroes {
+                
                 print("-----------------------------------"
                     + "\n\(player.name) choose \(3 - player.heroTeam.count) heroes"
                     + "\n-----------------------------------"
@@ -83,23 +92,28 @@ class Game {
                 
                 // Check the awnser
                 if let choice = readLine() {
-                    // If the name is correct
+                    // If the choice is not empty
                     if !choice.isEmpty {
                         // Read the choice
                         switch choice {
                         case "1":
+                            // Create a Fighter
                             Player.createHero(player: player, choice: HeroType.fighter)
                         case "2":
+                            // Create a Healer
                             Player.createHero(player: player, choice: HeroType.healer)
                         case "3":
+                            // Create a Dwarf
                             Player.createHero(player: player, choice: HeroType.dwarf)
                         case "4":
+                            // Create a Colossus
                             Player.createHero(player: player, choice: HeroType.colossus)
                         default:
-                            // if the choice is not
+                            // If the choice is not 1, 2, 3 or 4
                             print("Sorry, are you... 😬")
                         }
                     } else {
+                        // If the choice is empty
                         print("Hey ! You must choose a hero!")
                     }
                 }

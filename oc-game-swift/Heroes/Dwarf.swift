@@ -8,6 +8,6 @@
 
 import Foundation
 
-// Dwarf class
+// MARK: - Dwarf class
 class Dwarf: Hero {
 }
