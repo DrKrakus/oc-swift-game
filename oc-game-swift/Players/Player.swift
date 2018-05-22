@@ -70,12 +70,73 @@ class Player {
     }
     
     // Choose a hero for fight this turn
-    func chooseHeroToPlay(for player: Player) {
+    func chooseHeroToPlay(for player: Player) -> Hero? {
+        // Heroes shortcut
+        let hero1 = player.heroTeam[0]
+        let hero2 = player.heroTeam[1]
+        let hero3 = player.heroTeam[2]
         
+        // Print the message
+        print("-----------------------------------"
+            + "\n\(player.name), it's your turn. Choose a hero to fight with"
+            + "\n-----------------------------------"
+            + "\n1. \(hero1.description())"
+            + "\n2. \(hero2.description())"
+            + "\n3. \(hero3.description())")
+        
+        //Read choice
+        if let choice = readLine() {
+            // If choice is not empty
+            if !choice.isEmpty {
+                switch choice {
+                case "1":
+                    if heroIsAlive(hero1) {
+                        return hero1
+                    }
+                case "2":
+                    if heroIsAlive(hero2) {
+                        return hero2
+                    }
+                case "3":
+                    if heroIsAlive(hero3) {
+                        return hero3
+                    }
+                default:
+                    // If choice is not good
+                    print("You only have 3 heroes, you must choose 1, 2 or 3")
+                }
+            } else {
+                // If choice is emplty
+                print("It's too late, you have to fight now !")
+            }
+        }
+        // If the readLine fails
+        return nil
     }
     
     // Choose an ennemy hero to attack
-    func chooseHeroToAttack(by: Hero) {
+    func chooseHeroToAttack(for player: Player) -> Hero? {
+        
+        
+    }
+    
+    
+    func heroAttackHero(by: Hero, target: Hero) {
+    
+    }
+    
+    // Check the status of heroes
+    func heroIsAlive(_ hero: Hero) -> Bool {
+        if hero.isAlive {
+            // Print this
+            print("\(hero.name) is glad to honor this fight")
+            // Return true
+            return true
+        } else {
+            // If not
+            print("This hero is dead...")
+            return false
+        }
         
     }
     

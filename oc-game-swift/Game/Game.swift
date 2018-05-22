@@ -129,10 +129,34 @@ class Game {
     
     //Fight menu
     static func fightMenu() {
+        // Number of turns
+        var numberOfTurns = 1
+        
         // For all the players
         for player in Game.playerList {
-            // Choose a hero of your team
-            player.chooseHeroToPlay(for: player)
+            // Choose an alive hero of your team
+            guard let heroSelected = player.chooseHeroToPlay(for: player) else {
+                print("You need to choose an alive hero")
+                return
+            }
+            // Choose a target for your hero
+            guard let targetSelected = player.chooseHeroToAttack(for: player) else {
+                print("You have to choose a valid target")
+                return
+            }
+            // Your hero attack the target
+            // player.heroAttackHero(heroSelected, targetSelect)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
 
             
         }

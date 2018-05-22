@@ -17,6 +17,8 @@ class Hero {
     var type: HeroType
     // Life of the hero
     var life: Int
+    // Is still alive ?
+    var isAlive = true
     
     // MARK: - Init
     init(name: String, type: HeroType) {
@@ -39,6 +41,11 @@ class Hero {
     // MARK: - Methods
     // Description
     func description() {
-        print("\(name) || \(type) with \(life) HP")
+        if isAlive {
+            print("\(name) || \(type) with \(life) HP")
+        } else {
+            print("\(name) || \(type) 💀 DIED IN COMBAT 💀")
+        }
     }
+    
 }
