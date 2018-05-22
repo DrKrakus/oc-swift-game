@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+// MARK : - Create staff
+class Staff {
+    // MARK: Properties
+    // Healing
+    static var healing = 12
+}

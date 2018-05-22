@@ -36,8 +36,13 @@ class Player {
                 + "\n-----------------------------------")
             // Read the answer
             if let name = readLine(){
-                // If the name is not empty, add the hero to team
-                if !name.isEmpty {
+                // Check if the name is already taken
+                if Game.heroesNames.contains(name) {
+                    print("This name is already taken")
+                } else if name.isEmpty {
+                    // Check if the name is empty
+                    print("Srsly? Everytime? Choose a name...")
+                } else { // If not
                     // Switch for the type of hero to add
                     switch choice {
                     case .fighter:
@@ -55,16 +60,23 @@ class Player {
                     }
                     // Print that all is good
                     print("Your \(choice) \(name) has been added to your team")
+                    // Add the name to the array of heroes names
+                    Game.heroesNames.append(name)
                     // Turn the check on true
                     heroWasCreated = true
-                    
-                } else {
-                    // If the name is empty
-                    print("Srsly? Everytime? Choose a name...")
-                    
                 }
             }
         }
+    }
+    
+    // Choose a hero for fight this turn
+    func chooseHeroToPlay(for player: Player) {
+        
+    }
+    
+    // Choose an ennemy hero to attack
+    func chooseHeroToAttack(by: Hero) {
+        
     }
     
 }

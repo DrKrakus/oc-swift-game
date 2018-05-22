@@ -15,10 +15,30 @@ class Hero {
     var name: String
     // Type of the hero
     var type: HeroType
+    // Life of the hero
+    var life: Int
     
     // MARK: - Init
     init(name: String, type: HeroType) {
         self.name = name
         self.type = type
+        
+        //Calculated life according to the type
+        switch type {
+        case .fighter:
+            self.life = 100
+        case .healer:
+            self.life = 125
+        case .dwarf:
+            self.life = 75
+        case .colossus:
+            self.life = 150
+        }
+    }
+    
+    // MARK: - Methods
+    // Description
+    func description() {
+        print("\(name) || \(type) with \(life) HP")
     }
 }

@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+// MARK : - Create shield
+class Shield {
+    // MARK: Properties
+    // Damage
+    static var damage = 5
+}

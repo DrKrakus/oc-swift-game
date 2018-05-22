@@ -10,4 +10,14 @@ import Foundation
 
 // MARK: - Dwarf class
 class Dwarf: Hero {
+    // MARK: Properties
+    // Damage
+    var damage = Axe.damage
+    
+    // MARK: Methods
+    // Attack a hero
+    func attackHero(target: Hero) {
+        target.life -= self.damage
+    }
 }
+

@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+// MARK : - Create axe
+class Axe {
+    // MARK: Properties
+    // Damage
+    static var damage = 20
+}

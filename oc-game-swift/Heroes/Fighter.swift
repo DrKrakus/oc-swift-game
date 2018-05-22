@@ -10,4 +10,13 @@ import Foundation
 
 // MARK: - Fighter class
 class Fighter: Hero {
+    // MARK: - Properties
+    // Damage
+    var damage = Sword.damage
+    
+    // MARK: - Methods
+    // Attack a hero
+    func attackHero(target: Hero) {
+        target.life -= self.damage
+    }
 }

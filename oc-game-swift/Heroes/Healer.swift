@@ -10,4 +10,13 @@ import Foundation
 
 // MARK: - Healer class
 class Healer: Hero {
+    // MARK: Properties
+    // Healing
+    var healing = Staff.healing
+    
+    // MARK: - Methods
+    // Heal a hero
+    func healHero(target: Hero) {
+        target.life += self.healing
+    }
 }

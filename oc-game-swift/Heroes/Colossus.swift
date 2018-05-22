@@ -10,4 +10,13 @@ import Foundation
 
 // MARK: - Colossus class
 class Colossus: Hero {
+    // MARK: Properties
+    // Damage
+    var damage = Shield.damage
+    
+    // MARK: Methods
+    // Attack a hero
+    func attackHero(target: Hero) {
+        target.life -= self.damage
+    }
 }

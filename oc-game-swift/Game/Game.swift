@@ -15,6 +15,8 @@ class Game {
     static var playerList: [Player] = []
     // The maximum of players per game
     static let maxPlayers = 2
+    // Array of the heroes names
+    static var heroesNames: [String] = []
     
     // MARK: - Methods
     // Start menu
@@ -43,13 +45,6 @@ class Game {
             }
         }
         
-    }
-    
-    // Show credits
-    static func showCredits() {
-        print("This awesome game is developped by Jérôme Krakus !")
-        // Return to the start menu
-        Game.start()
     }
     
     // Create players
@@ -126,8 +121,28 @@ class Game {
         
         //Both teams are ready to fight!
         print("Both teams are ready, prepare to fight!")
+        // Go to the fight menu
+        fightMenu()
         
         
+    }
+    
+    //Fight menu
+    static func fightMenu() {
+        // For all the players
+        for player in Game.playerList {
+            // Choose a hero of your team
+            player.chooseHeroToPlay(for: player)
+
+            
+        }
+    }
+    
+    // Show credits
+    static func showCredits() {
+        print("This awesome game is developped by Jérôme Krakus !")
+        // Return to the start menu
+        Game.start()
     }
     
 }
