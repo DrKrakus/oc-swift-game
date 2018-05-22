@@ -8,6 +8,7 @@
 
 import Foundation
 
-
+// MARK: - Start the game
+Game.start()
 
 

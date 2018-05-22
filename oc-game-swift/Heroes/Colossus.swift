@@ -8,3 +8,6 @@
 
 import Foundation
 
+// MARK: - Colossus class
+class Colossus: Hero {
+}

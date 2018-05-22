@@ -8,3 +8,10 @@
 
 import Foundation
 
+// MARK: - List the different type of heroes
+enum HeroType {
+    case fighter
+    case healer
+    case dwarf
+    case colossus
+}

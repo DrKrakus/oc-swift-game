@@ -8,4 +8,6 @@
 
 import Foundation
 
-
+// MARK: - Healer class
+class Healer: Hero {
+}
