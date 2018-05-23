@@ -70,36 +70,91 @@ class Player {
     }
     
     // Choose a hero for fight this turn
-    func chooseHeroToPlay(for player: Player) -> Hero? {
-        // Heroes shortcut
-        let hero1 = player.heroTeam[0]
-        let hero2 = player.heroTeam[1]
-        let hero3 = player.heroTeam[2]
+    func chooseHeroFromYourTeam(for player: Player) -> Hero? {
+        // Hero is choose ?
+        var heroChosen = false
         
-        // Print the message
-        print("-----------------------------------"
-            + "\n\(player.name), it's your turn. Choose a hero to fight with"
-            + "\n-----------------------------------"
-            + "\n1. \(hero1.description())"
-            + "\n2. \(hero2.description())"
-            + "\n3. \(hero3.description())")
+        while heroChosen == false {
+            // Print the message
+            print("-----------------------------------"
+                + "\n\(player.name), it's your turn. Choose a hero to fight with"
+                + "\n-----------------------------------"
+                + "\n1. \(player.heroTeam[0].description())"
+                + "\n2. \(player.heroTeam[1].description())"
+                + "\n3. \(player.heroTeam[2].description())")
+            
+            // Choose a hero
+            if let hero = chooseHero(player: player) {
+                heroChosen = true
+                return hero
+            }
+        }
         
-        //Read choice
+    }
+    
+    // Choose an ennemy hero to attack
+    func chooseHeroToAttack(_ player: Player) -> Hero? {
+        // Hero is choose ?
+        var heroChosen = false
+        
+        while heroChosen == false {
+            // Print the message
+            print("-----------------------------------"
+                + "\nChoose a target from the team of \(player.name)"
+                + "\n-----------------------------------"
+                + "\n1. \(player.heroTeam[0].description())"
+                + "\n2. \(player.heroTeam[1].description())"
+                + "\n3. \(player.heroTeam[2].description())")
+            
+            // Choose a hero
+            if let targetHero = chooseHero(player: player) {
+                heroChosen = true
+                return targetHero
+            }
+        }
+        
+    }
+    
+    // Choose a hero to heal
+    func chooseHeroToHeal(_ player: Player) -> Hero? {
+        // Hero is choose ?
+        var heroChosen = false
+        
+        while heroChosen == false {
+            // Print the message
+            print("-----------------------------------"
+                + "\n\(player.name), choose the hero to heal"
+                + "\n-----------------------------------"
+                + "\n1. \(player.heroTeam[0].description())"
+                + "\n2. \(player.heroTeam[1].description())"
+                + "\n3. \(player.heroTeam[2].description())")
+            
+            // Choose a hero
+            if let heroToHeal = chooseHero(player: player) {
+                heroChosen = true
+                return heroToHeal
+            }
+        }
+    }
+    
+    // Choosing a hero
+    func chooseHero(player: Player) -> Hero? {
+        // Read the choice
         if let choice = readLine() {
             // If choice is not empty
             if !choice.isEmpty {
                 switch choice {
                 case "1":
-                    if heroIsAlive(hero1) {
-                        return hero1
+                    if heroIsAlive(player.heroTeam[0]) {
+                        return player.heroTeam[0]
                     }
                 case "2":
-                    if heroIsAlive(hero2) {
-                        return hero2
+                    if heroIsAlive(player.heroTeam[1]) {
+                        return player.heroTeam[1]
                     }
                 case "3":
-                    if heroIsAlive(hero3) {
-                        return hero3
+                    if heroIsAlive(player.heroTeam[2]) {
+                        return player.heroTeam[2]
                     }
                 default:
                     // If choice is not good
@@ -107,30 +162,16 @@ class Player {
                 }
             } else {
                 // If choice is emplty
-                print("It's too late, you have to fight now !")
+                print("you have to choose a hero")
             }
         }
         // If the readLine fails
         return nil
     }
     
-    // Choose an ennemy hero to attack
-    func chooseHeroToAttack(for player: Player) -> Hero? {
-        
-        
-    }
-    
-    
-    func heroAttackHero(by: Hero, target: Hero) {
-    
-    }
-    
-    // Check the status of heroes
+    // Check the life of hero
     func heroIsAlive(_ hero: Hero) -> Bool {
         if hero.isAlive {
-            // Print this
-            print("\(hero.name) is glad to honor this fight")
-            // Return true
             return true
         } else {
             // If not

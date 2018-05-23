@@ -40,11 +40,18 @@ class Hero {
     
     // MARK: - Methods
     // Description
-    func description() {
+    func description() -> String {
         if isAlive {
-            print("\(name) || \(type) with \(life) HP")
+            return "\(name) || \(type) with \(life) HP"
         } else {
-            print("\(name) || \(type) 💀 DIED IN COMBAT 💀")
+            return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
+        }
+    }
+    
+    // Dead or alive
+    func itIsDead() {
+        if life <= 0 {
+           isAlive = false
         }
     }
     

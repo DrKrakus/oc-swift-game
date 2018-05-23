@@ -17,6 +17,11 @@ class Game {
     static let maxPlayers = 2
     // Array of the heroes names
     static var heroesNames: [String] = []
+    // Number of turns
+    static var numberOfTurns = 1
+    // Playing player
+    static var playingPlayer = Game.playerList[numberOfTurns % 2]
+    static var targetPlayer = Game.playerList[(numberOfTurns + 1) % 2]
     
     // MARK: - Methods
     // Start menu
@@ -114,52 +119,70 @@ class Game {
                 }
             }
             
-            // The player's team is ready !
+            // The player's team is ready
             print("The team of \(player.name) is ready!")
             
         }
         
-        //Both teams are ready to fight!
+        //Both teams are ready
         print("Both teams are ready, prepare to fight!")
-        // Go to the fight menu
-        fightMenu()
+        
+        // Go to the fight
+        fightTime()
         
         
     }
     
-    //Fight menu
-    static func fightMenu() {
-        // Number of turns
-        var numberOfTurns = 1
+    // Fight time
+    static func fightTime() {
+        // Hero chosen
+        var heroChosen: Hero
+        // Target chosen
+        var targetChosen: Hero
         
-        // For all the players
-        for player in Game.playerList {
-            // Choose an alive hero of your team
-            guard let heroSelected = player.chooseHeroToPlay(for: player) else {
-                print("You need to choose an alive hero")
-                return
-            }
-            // Choose a target for your hero
-            guard let targetSelected = player.chooseHeroToAttack(for: player) else {
-                print("You have to choose a valid target")
-                return
-            }
-            // Your hero attack the target
-            // player.heroAttackHero(heroSelected, targetSelect)
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-
-            
+        
+        
+        // Playing player choose a hero of his team
+        guard let hero = playingPlayer.chooseHeroFromYourTeam(for: playingPlayer) else {
+            return
         }
+        // Assign value to heroChosen
+        heroChosen = hero
+        
+        
+        
+        // Playing player choose a target to attack or heal
+        if heroChosen.type == .healer {
+            // Guard for target selection
+            guard let target = playingPlayer.chooseHeroToHeal(playingPlayer) else {
+                return
+            }
+            // Assign value to targetchosen
+            targetChosen = target
+        } else {
+            // Guard for target selection
+            guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
+                return
+            }
+            // Assign value to targetchosen
+            targetChosen = target
+        }
+        
+        
+        
+        // Attack or Heal phase
+        // TODO: Fix that
+        if heroChosen.type == .healer {
+            heroChosen.healHero(targetChosen)
+        } else {
+            heroChosen.attackHero(targetChosen)
+        }
+        
+        
+
+        
+        
+        
     }
     
     // Show credits
