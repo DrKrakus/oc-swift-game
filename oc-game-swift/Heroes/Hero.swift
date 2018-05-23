@@ -17,6 +17,7 @@ class Hero {
     var type: HeroType
     // Life of the hero
     var life: Int
+    var maxLife: Int
     // Is still alive ?
     var isAlive = true
     
@@ -25,16 +26,20 @@ class Hero {
         self.name = name
         self.type = type
         
-        //Calculated life according to the type
+        //Calculated life and maxLife according to the type
         switch type {
         case .fighter:
             self.life = 100
+            self.maxLife = 100
         case .healer:
             self.life = 125
+            self.maxLife = 125
         case .dwarf:
             self.life = 75
+            self.maxLife = 75
         case .colossus:
             self.life = 150
+            self.maxLife = 150
         }
     }
     
@@ -42,16 +47,9 @@ class Hero {
     // Description
     func description() -> String {
         if isAlive {
-            return "\(name) || \(type) with \(life) HP"
+            return "\(name) || \(type) with \(life)/\(maxLife) HP"
         } else {
             return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
-        }
-    }
-    
-    // Dead or alive
-    func itIsDead() {
-        if life <= 0 {
-           isAlive = false
         }
     }
     

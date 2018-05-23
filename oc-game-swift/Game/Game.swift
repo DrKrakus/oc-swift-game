@@ -21,17 +21,11 @@ class Game {
     static var numberOfTurns = 1
     // Playing player
     static var playingPlayer:Player {
-        get {
-            let number = numberOfTurns % 2
-            return Game.playerList[number]
-        }
+        return Game.playerList[numberOfTurns % 2]
     }
     // Target player
     static var targetPlayer:Player {
-        get {
-            let number = (numberOfTurns + 1) % 2
-            return Game.playerList[number]
-        }
+        return Game.playerList[(numberOfTurns + 1) % 2]
     }
     
     // MARK: - Methods
@@ -82,7 +76,7 @@ class Game {
             }
         }
         // When all the players are created, go to the hero selection
-        pickAHeroMenu()
+        Game.pickAHeroMenu()
         
     }
     
@@ -109,16 +103,16 @@ class Game {
                         switch choice {
                         case "1":
                             // Create a Fighter
-                            Player.createHero(player: player, choice: HeroType.fighter)
+                            player.createHero(player: player, choice: HeroType.fighter)
                         case "2":
                             // Create a Healer
-                            Player.createHero(player: player, choice: HeroType.healer)
+                            player.createHero(player: player, choice: HeroType.healer)
                         case "3":
                             // Create a Dwarf
-                            Player.createHero(player: player, choice: HeroType.dwarf)
+                            player.createHero(player: player, choice: HeroType.dwarf)
                         case "4":
                             // Create a Colossus
-                            Player.createHero(player: player, choice: HeroType.colossus)
+                            player.createHero(player: player, choice: HeroType.colossus)
                         default:
                             // If the choice is not 1, 2, 3 or 4
                             print("Sorry, are you... 😬")
@@ -146,10 +140,11 @@ class Game {
     
     // Fight time
     static func fightTime() {
-        // Winner of the fight
-        var winner = false
+        // There is a loser ?
+        var loserOfFight = false
         
-        while winner == false {
+        // Fight continues until a player lose
+        while loserOffight == false {
             // Hero chosen
             var heroChosen: Hero
             // Target chosen
@@ -206,6 +201,12 @@ class Game {
             } else {
                 print("WTF ??")
             }
+            
+            // There is a loser ?
+
+            
+            // If a player has 3 heroes dead
+          
             
             // Adding a turn
             numberOfTurns += 1

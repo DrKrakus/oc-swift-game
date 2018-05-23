@@ -17,6 +17,13 @@ class Fighter: Hero {
     // MARK: - Methods
     // Attack a hero
     func attackHero(_ target: Hero) {
+        // Amount of damage
         target.life -= self.damage
+        
+        // If the target is dead
+        if target.life <= 0 {
+            target.life = 0
+            target.isAlive = false
+        }
     }
 }

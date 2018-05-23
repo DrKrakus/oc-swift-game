@@ -17,6 +17,12 @@ class Healer: Hero {
     // MARK: - Methods
     // Heal a hero
     func healHero(_ target: Hero) {
+        // Amount of healing
         target.life += self.healing
+        
+        // No overheal allowed
+        if target.life > target.maxLife {
+            target.life = target.maxLife
+        }
     }
 }

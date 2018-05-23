@@ -17,6 +17,8 @@ class Player {
     var heroTeam: [Hero] = []
     // Max heroes per team
     let maxHeroes = 3
+    // Count of dead heroes
+    var deadHeroes = 0
     
     // MARK: - Init
     init(name: String) {
@@ -25,7 +27,7 @@ class Player {
     
     // MARK: - Methods
     // Create a hero
-    static func createHero(player: Player, choice: HeroType) {
+    func createHero(player: Player, choice: HeroType) {
         // A check for hero creation
         var heroWasCreated = false
         // While the picked hero is not create
@@ -138,7 +140,7 @@ class Player {
     }
     
     // Choosing a hero
-    func chooseHero(player: Player) -> Hero? {
+    private func chooseHero(player: Player) -> Hero? {
         // Read the choice
         if let choice = readLine() {
             // If choice is not empty
@@ -170,7 +172,7 @@ class Player {
     }
     
     // Check the life of hero
-    func heroIsAlive(_ hero: Hero) -> Bool {
+    private func heroIsAlive(_ hero: Hero) -> Bool {
         if hero.isAlive {
             return true
         } else {
