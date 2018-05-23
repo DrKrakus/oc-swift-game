@@ -16,7 +16,7 @@ class Healer: Hero {
     
     // MARK: - Methods
     // Heal a hero
-    func healHero(target: Hero) {
+    func healHero(_ target: Hero) {
         target.life += self.healing
     }
 }

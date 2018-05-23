@@ -16,7 +16,7 @@ class Colossus: Hero {
     
     // MARK: Methods
     // Attack a hero
-    func attackHero(target: Hero) {
+    func attackHero(_ target: Hero) {
         target.life -= self.damage
     }
 }

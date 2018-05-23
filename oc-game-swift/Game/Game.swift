@@ -135,52 +135,71 @@ class Game {
     
     // Fight time
     static func fightTime() {
-        // Hero chosen
-        var heroChosen: Hero
-        // Target chosen
-        var targetChosen: Hero
+        // Winner of the fight
+        var winner = false
         
-        
-        
-        // Playing player choose a hero of his team
-        guard let hero = playingPlayer.chooseHeroFromYourTeam(for: playingPlayer) else {
-            return
-        }
-        // Assign value to heroChosen
-        heroChosen = hero
-        
-        
-        
-        // Playing player choose a target to attack or heal
-        if heroChosen.type == .healer {
-            // Guard for target selection
-            guard let target = playingPlayer.chooseHeroToHeal(playingPlayer) else {
+        while winner == false {
+            // Hero chosen
+            var heroChosen: Hero
+            // Target chosen
+            var targetChosen: Hero
+            
+            
+            
+            // Playing player choose a hero of his team
+            // Guard for a valid Hero
+            guard let hero = playingPlayer.chooseHeroFromYourTeam(for: playingPlayer) else {
                 return
             }
-            // Assign value to targetchosen
-            targetChosen = target
-        } else {
-            // Guard for target selection
-            guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
-                return
+            // Assign value to heroChosen
+            heroChosen = hero
+            
+            
+            
+            // Playing player choose a target to attack or heal
+            if heroChosen.type == .healer {
+                // Guard for target selection
+                guard let target = playingPlayer.chooseHeroToHeal(playingPlayer) else {
+                    return
+                }
+                // Assign value to targetchosen
+                targetChosen = target
+            } else {
+                // Guard for target selection
+                guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
+                    return
+                }
+                // Assign value to targetchosen
+                targetChosen = target
             }
-            // Assign value to targetchosen
-            targetChosen = target
+            
+            
+            
+            // Attack or Heal phase according to the type of hero
+            if let hero = heroChosen as? Fighter {
+                hero.attackHero(targetChosen)
+                // Print the result
+                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
+            } else if let hero = heroChosen as? Healer {
+                hero.healHero(targetChosen)
+                // Print the result
+                print("\(hero.name) heal \(targetChosen.name), restauring \(hero.healing) life")
+            } else if let hero = heroChosen as? Dwarf {
+                hero.attackHero(targetChosen)
+                // Print the result
+                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
+            } else if let hero = heroChosen as? Colossus {
+                hero.attackHero(targetChosen)
+                // Print the result
+                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
+            } else {
+                print("WTF ??")
+            }
+            
+            // Adding a turn
+            numberOfTurns += 1
+            
         }
-        
-        
-        
-        // Attack or Heal phase
-        // TODO: Fix that
-        if heroChosen.type == .healer {
-            heroChosen.healHero(targetChosen)
-        } else {
-            heroChosen.attackHero(targetChosen)
-        }
-        
-        
-
-        
         
         
     }
