@@ -20,8 +20,19 @@ class Game {
     // Number of turns
     static var numberOfTurns = 1
     // Playing player
-    static var playingPlayer = Game.playerList[numberOfTurns % 2]
-    static var targetPlayer = Game.playerList[(numberOfTurns + 1) % 2]
+    static var playingPlayer:Player {
+        get {
+            let number = numberOfTurns % 2
+            return Game.playerList[number]
+        }
+    }
+    // Target player
+    static var targetPlayer:Player {
+        get {
+            let number = (numberOfTurns + 1) % 2
+            return Game.playerList[number]
+        }
+    }
     
     // MARK: - Methods
     // Start menu
