@@ -12,5 +12,5 @@ import Foundation
 class Shield {
     // MARK: Properties
     // Damage
-    static var damage = 5
+    static var damage = 8
 }

@@ -15,6 +15,14 @@ class Healer: Hero {
     var healing = Staff.healing
     
     // MARK: - Methods
+    // Description
+    override func description() -> String {
+        if self.isDead {
+            return super.description()
+        } else {
+            return super.description() + " -- \(healing) heal"
+        }
+    }
     // Heal a hero
     func healHero(_ target: Hero) {
         // Amount of healing

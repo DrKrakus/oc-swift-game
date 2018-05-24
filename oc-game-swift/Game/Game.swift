@@ -20,11 +20,11 @@ class Game {
     // Number of turns
     static var numberOfTurns = 1
     // Playing player
-    static var playingPlayer:Player {
+    static var playingPlayer: Player {
         return Game.playerList[numberOfTurns % 2]
     }
     // Target player
-    static var targetPlayer:Player {
+    static var targetPlayer: Player {
         return Game.playerList[(numberOfTurns + 1) % 2]
     }
     
@@ -141,10 +141,10 @@ class Game {
     // Fight time
     static func fightTime() {
         // There is a loser ?
-        var loserOfFight = false
+        var thereIsALoser = false
         
         // Fight continues until a player lose
-        while loserOffight == false {
+        while thereIsALoser == false {
             // Hero chosen
             var heroChosen: Hero
             // Target chosen
@@ -154,7 +154,7 @@ class Game {
             
             // Playing player choose a hero of his team
             // Guard for a valid Hero
-            guard let hero = playingPlayer.chooseHeroFromYourTeam(for: playingPlayer) else {
+            guard let hero = playingPlayer.chooseHeroFromYourTeam() else {
                 return
             }
             // Assign value to heroChosen
@@ -165,7 +165,7 @@ class Game {
             // Playing player choose a target to attack or heal
             if heroChosen.type == .healer {
                 // Guard for target selection
-                guard let target = playingPlayer.chooseHeroToHeal(playingPlayer) else {
+                guard let target = playingPlayer.chooseHeroToHeal() else {
                     return
                 }
                 // Assign value to targetchosen
@@ -202,19 +202,29 @@ class Game {
                 print("WTF ??")
             }
             
-            // There is a loser ?
-
+            // Checking for a loser
+            playingPlayer.loserCheck()
+            targetPlayer.loserCheck()
             
-            // If a player has 3 heroes dead
-          
+            // If a loser was found
+            for player in Game.playerList {
+                if player.isALoser == true {
+                    print("💩 \(player.name) you lose! 💩")
+                    thereIsALoser = true
+                }
+            }
             
-            // Adding a turn
+            // Else, adding a turn and continue the fight
             numberOfTurns += 1
             
         }
         
+        // When the fight is done
+        print("Soon the step 3 : the weapon switch !!")
+        
         
     }
+    
     
     // Show credits
     static func showCredits() {

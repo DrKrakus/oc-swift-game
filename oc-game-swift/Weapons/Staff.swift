@@ -12,5 +12,5 @@ import Foundation
 class Staff {
     // MARK: Properties
     // Healing
-    static var healing = 12
+    static var healing = 5
 }

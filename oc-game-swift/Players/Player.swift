@@ -10,6 +10,9 @@ import Foundation
 
 // MARK: - Create the Player class
 class Player {
+    
+    
+    
     // MARK: - Properties
     // Player name
     var name: String
@@ -18,12 +21,16 @@ class Player {
     // Max heroes per team
     let maxHeroes = 3
     // Count of dead heroes
-    var deadHeroes = 0
+    var deadHeroes: [Hero] = []
+    // Is the loser
+    var isALoser = false
     
     // MARK: - Init
     init(name: String) {
         self.name = name
     }
+    
+    
     
     // MARK: - Methods
     // Create a hero
@@ -71,28 +78,32 @@ class Player {
         }
     }
     
+    
+    
     // Choose a hero for fight this turn
-    func chooseHeroFromYourTeam(for player: Player) -> Hero? {
+    func chooseHeroFromYourTeam() -> Hero? {
         // Hero is choose ?
         var heroChosen = false
         
         while heroChosen == false {
             // Print the message
             print("-----------------------------------"
-                + "\n\(player.name), it's your turn. Choose a hero to fight with"
+                + "\n\(self.name), it's your turn. Choose a hero to fight with"
                 + "\n-----------------------------------"
-                + "\n1. \(player.heroTeam[0].description())"
-                + "\n2. \(player.heroTeam[1].description())"
-                + "\n3. \(player.heroTeam[2].description())")
+                + "\n1. \(self.heroTeam[0].description())"
+                + "\n2. \(self.heroTeam[1].description())"
+                + "\n3. \(self.heroTeam[2].description())")
             
             // Choose a hero
-            if let hero = chooseHero(player: player) {
+            if let hero = chooseHero(self) {
                 heroChosen = true
                 return hero
             }
         }
         
     }
+    
+    
     
     // Choose an ennemy hero to attack
     func chooseHeroToAttack(_ player: Player) -> Hero? {
@@ -109,7 +120,7 @@ class Player {
                 + "\n3. \(player.heroTeam[2].description())")
             
             // Choose a hero
-            if let targetHero = chooseHero(player: player) {
+            if let targetHero = chooseHero(player) {
                 heroChosen = true
                 return targetHero
             }
@@ -117,30 +128,36 @@ class Player {
         
     }
     
+    
+    
     // Choose a hero to heal
-    func chooseHeroToHeal(_ player: Player) -> Hero? {
+    func chooseHeroToHeal() -> Hero? {
         // Hero is choose ?
         var heroChosen = false
         
         while heroChosen == false {
             // Print the message
             print("-----------------------------------"
-                + "\n\(player.name), choose the hero to heal"
+                + "\n\(self.name), choose the hero to heal"
                 + "\n-----------------------------------"
-                + "\n1. \(player.heroTeam[0].description())"
-                + "\n2. \(player.heroTeam[1].description())"
-                + "\n3. \(player.heroTeam[2].description())")
+                + "\n1. \(self.heroTeam[0].description())"
+                + "\n2. \(self.heroTeam[1].description())"
+                + "\n3. \(self.heroTeam[2].description())")
             
             // Choose a hero
-            if let heroToHeal = chooseHero(player: player) {
+            if let heroToHeal = chooseHero(self) {
                 heroChosen = true
                 return heroToHeal
             }
         }
     }
     
-    // Choosing a hero
-    private func chooseHero(player: Player) -> Hero? {
+    
+    
+    /// Choosing a hero
+    /// - player: Player, description
+    /// return: Hero?
+    private func chooseHero(_ player: Player) -> Hero? {
         // Read the choice
         if let choice = readLine() {
             // If choice is not empty
@@ -173,14 +190,31 @@ class Player {
     
     // Check the life of hero
     private func heroIsAlive(_ hero: Hero) -> Bool {
-        if hero.isAlive {
+        if hero.isDead == false {
             return true
         } else {
-            // If not
+            // If is dead
             print("This hero is dead...")
             return false
         }
         
+    }
+
+    // Check for dead heroes
+    func loserCheck() {
+        // Checking in the player's hearoTeam
+        for hero in self.heroTeam {
+            guard hero.isDead, self.deadHeroes.contains(where: { return $0.name == hero.name }) else {
+                return
+            }
+            self.deadHeroes.append(hero)
+        }
+        
+        // There is a loser ?
+        if self.deadHeroes.count == maxHeroes {
+            // Yes
+            self.isALoser = true
+        }
     }
     
 }

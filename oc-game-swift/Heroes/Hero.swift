@@ -19,7 +19,7 @@ class Hero {
     var life: Int
     var maxLife: Int
     // Is still alive ?
-    var isAlive = true
+    var isDead = false
     
     // MARK: - Init
     init(name: String, type: HeroType) {
@@ -46,10 +46,10 @@ class Hero {
     // MARK: - Methods
     // Description
     func description() -> String {
-        if isAlive {
-            return "\(name) || \(type) with \(life)/\(maxLife) HP"
-        } else {
+        if isDead {
             return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
+        } else {
+            return "\(name) || \(type) -- \(life)/\(maxLife) HP"
         }
     }
     
