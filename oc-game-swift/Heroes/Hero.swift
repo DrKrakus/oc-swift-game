@@ -15,9 +15,25 @@ class Hero {
     var name: String
     // Type of the hero
     var type: HeroType
+    // Maximum of life
+    let maxLife: Int
     // Life of the hero
-    var life: Int
-    var maxLife: Int
+    var life: Int {
+        willSet {
+            if newValue > life {
+                print("\(self.name) is about to get heal")
+            } else {
+                print("\(self.name) is about to get attack")
+            }
+        }
+        didSet {
+            if oldValue > life {
+                print("\(self.name) lose \(oldValue - life) HP, outch !")
+            } else {
+                 print("\(self.name) has been healed by \(life - oldValue)")
+            }
+        }
+    }
     // Is still alive ?
     var isDead = false
     
@@ -26,21 +42,20 @@ class Hero {
         self.name = name
         self.type = type
         
-        //Calculated life and maxLife according to the type
+        // Calculated life according to the type
         switch type {
         case .fighter:
             self.life = 100
-            self.maxLife = 100
         case .healer:
             self.life = 125
-            self.maxLife = 125
         case .dwarf:
             self.life = 75
-            self.maxLife = 75
         case .colossus:
             self.life = 150
-            self.maxLife = 150
         }
+        
+        // Maximum of life equal = life
+        self.maxLife = life
     }
     
     // MARK: - Methods
@@ -49,7 +64,7 @@ class Hero {
         if isDead {
             return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
         } else {
-            return "\(name) || \(type) -- \(life)/\(maxLife) HP"
+            return "\(name) || \(type) -- \(life)/\(maxLife)HP"
         }
     }
     

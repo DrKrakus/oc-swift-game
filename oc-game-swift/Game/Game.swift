@@ -31,7 +31,7 @@ class Game {
     // MARK: - Methods
     // Start menu
     static func start() {
-        
+        // Print the menu
         print("\n----------------------"
             + "\nSWIFT TO THE DEATH"
             + "\n----------------------"
@@ -54,7 +54,6 @@ class Game {
                 Game.start()
             }
         }
-        
     }
     
     // Create players
@@ -135,7 +134,6 @@ class Game {
         // Go to the fight
         fightTime()
         
-        
     }
     
     // Fight time
@@ -150,8 +148,6 @@ class Game {
             // Target chosen
             var targetChosen: Hero
             
-            
-            
             // Playing player choose a hero of his team
             // Guard for a valid Hero
             guard let hero = playingPlayer.chooseHeroFromYourTeam() else {
@@ -159,8 +155,6 @@ class Game {
             }
             // Assign value to heroChosen
             heroChosen = hero
-            
-            
             
             // Playing player choose a target to attack or heal
             if heroChosen.type == .healer {
@@ -179,27 +173,18 @@ class Game {
                 targetChosen = target
             }
             
-            
-            
             // Attack or Heal phase according to the type of hero
             if let hero = heroChosen as? Fighter {
                 hero.attackHero(targetChosen)
-                // Print the result
-                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
             } else if let hero = heroChosen as? Healer {
                 hero.healHero(targetChosen)
-                // Print the result
-                print("\(hero.name) heal \(targetChosen.name), restauring \(hero.healing) life")
             } else if let hero = heroChosen as? Dwarf {
                 hero.attackHero(targetChosen)
-                // Print the result
-                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
             } else if let hero = heroChosen as? Colossus {
                 hero.attackHero(targetChosen)
-                // Print the result
-                print("\(hero.name) attack \(targetChosen.name), doing \(hero.damage) dmg")
             } else {
                 print("WTF ??")
+                return
             }
             
             // Checking for a loser
@@ -209,7 +194,8 @@ class Game {
             // If a loser was found
             for player in Game.playerList {
                 if player.isALoser == true {
-                    print("💩 \(player.name) you lose! 💩")
+                    print("All the heroes of \(player.name) are dead..."
+                        + "\n💩 \(player.name) you lose! 💩")
                     thereIsALoser = true
                 }
             }
@@ -222,9 +208,7 @@ class Game {
         // When the fight is done
         print("Soon the step 3 : the weapon switch !!")
         
-        
     }
-    
     
     // Show credits
     static func showCredits() {

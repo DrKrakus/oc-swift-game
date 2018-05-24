@@ -20,8 +20,6 @@ class Player {
     var heroTeam: [Hero] = []
     // Max heroes per team
     let maxHeroes = 3
-    // Count of dead heroes
-    var deadHeroes: [Hero] = []
     // Is the loser
     var isALoser = false
     
@@ -152,8 +150,6 @@ class Player {
         }
     }
     
-    
-    
     /// Choosing a hero
     /// - player: Player, description
     /// return: Hero?
@@ -162,22 +158,15 @@ class Player {
         if let choice = readLine() {
             // If choice is not empty
             if !choice.isEmpty {
-                switch choice {
-                case "1":
-                    if heroIsAlive(player.heroTeam[0]) {
-                        return player.heroTeam[0]
+                // Try to cast the String to Int
+                if let numberChoice = Int(choice){
+                    // If ok, check if the hero is alive
+                    if heroIsAlive(player.heroTeam[numberChoice - 1]){
+                        return player.heroTeam[numberChoice - 1]
                     }
-                case "2":
-                    if heroIsAlive(player.heroTeam[1]) {
-                        return player.heroTeam[1]
-                    }
-                case "3":
-                    if heroIsAlive(player.heroTeam[2]) {
-                        return player.heroTeam[2]
-                    }
-                default:
-                    // If choice is not good
-                    print("You only have 3 heroes, you must choose 1, 2 or 3")
+                } else {
+                    // Can't cast
+                    print("I dont understand your choice...")
                 }
             } else {
                 // If choice is emplty
@@ -187,6 +176,8 @@ class Player {
         // If the readLine fails
         return nil
     }
+    
+    
     
     // Check the life of hero
     private func heroIsAlive(_ hero: Hero) -> Bool {
@@ -202,17 +193,20 @@ class Player {
 
     // Check for dead heroes
     func loserCheck() {
-        // Checking in the player's hearoTeam
+        var deadHeroes = 0
+        
+        // Check heroes status
         for hero in self.heroTeam {
-            guard hero.isDead, self.deadHeroes.contains(where: { return $0.name == hero.name }) else {
-                return
+            // If dead
+            if hero.isDead {
+                // Add to deadHeroes
+                deadHeroes += 1
             }
-            self.deadHeroes.append(hero)
         }
         
         // There is a loser ?
-        if self.deadHeroes.count == maxHeroes {
-            // Yes
+        if deadHeroes == maxHeroes {
+            // If a player has 3 heroes dead
             self.isALoser = true
         }
     }

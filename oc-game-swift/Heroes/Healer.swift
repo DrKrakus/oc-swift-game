@@ -25,10 +25,16 @@ class Healer: Hero {
     }
     // Heal a hero
     func healHero(_ target: Hero) {
-        // Amount of healing
+        // No overheal allowed
+        guard target.life != target.maxLife else {
+            print("You waste my time, he's already full life...")
+            return
+        }
+        
+        // Can heal
         target.life += self.healing
         
-        // No overheal allowed
+        // If the life > maxLife after healing
         if target.life > target.maxLife {
             target.life = target.maxLife
         }

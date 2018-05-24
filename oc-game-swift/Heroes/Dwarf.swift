@@ -30,7 +30,6 @@ class Dwarf: Hero {
         
         // If the target is dead
         if target.life <= 0 {
-            target.life = 0
             target.isDead = true
         }
     }

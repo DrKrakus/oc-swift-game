@@ -14,6 +14,7 @@ class Fighter: Hero {
     // Damage
     var damage = Sword.damage
     
+    
     // MARK: - Methods
     // Description
     override func description() -> String {
@@ -23,6 +24,7 @@ class Fighter: Hero {
            return super.description() + " -- \(damage) dmg"
         }
     }
+    
     // Attack a hero
     func attackHero(_ target: Hero) {
         // Amount of damage
@@ -30,8 +32,8 @@ class Fighter: Hero {
         
         // If the target is dead
         if target.life <= 0 {
-            target.life = 0
             target.isDead = true
         }
     }
+    
 }
