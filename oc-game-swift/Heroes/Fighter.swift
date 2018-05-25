@@ -8,12 +8,13 @@
 
 import Foundation
 
-// MARK: - Fighter class
+// Create the Fighter class
 class Fighter: Hero {
-    
-    // Init
+    // MARK: - Methods
+    /// Init the Fighter subclass
+    /// - name: String, Name of the fighter
     init(name: String) {
+        // Take the init of Hero class
         super.init(name: name, type: .fighter, life: 100, damage: Sword.damage)
     }
-    
 }

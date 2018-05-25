@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Create the Game class
+// Create the Game class
 class Game {
     // MARK: Properties
     // Array of players
@@ -29,7 +29,7 @@ class Game {
     }
     
     // MARK: - Methods
-    // Start menu
+    /// The starting menu
     static func start() {
         // Print the menu
         print("\n----------------------"
@@ -56,13 +56,16 @@ class Game {
         }
     }
     
-    // Create players
+    /// Create the players for the game
     static func createPlayers() {
         // While there is no all the players for the game
         while Game.playerList.count < Game.maxPlayers {
+            
+            // Print the message
             print("---------------------------------------------------"
                 + "\nChoose your name player \(Game.playerList.count + 1)"
                 + "\n---------------------------------------------------")
+            
             // Read the name of player
             if let name = readLine(){
                 if !name.isEmpty {
@@ -74,18 +77,20 @@ class Game {
                 }
             }
         }
+        
         // When all the players are created, go to the hero selection
         Game.pickAHeroMenu()
-        
     }
     
-    // Hero selection menu
+    /// The player have to choose heroes for his team
     static func pickAHeroMenu() {
         // Each player choose their heroes
         for player in Game.playerList {
+            
             // While one player doesnt have all their heroes
             while player.heroTeam.count < player.maxHeroes {
                 
+                // Print the message
                 print("-----------------------------------"
                     + "\n\(player.name) choose \(3 - player.heroTeam.count) heroes"
                     + "\n-----------------------------------"
@@ -94,7 +99,7 @@ class Game {
                     + "\n 3. Dwarf - Fearless and powerfull, but weak too"
                     + "\n 4. Colossus - Tanky as fuck, but make less damage than your little sister")
                 
-                // Check the awnser
+                // Read the answer
                 if let choice = readLine() {
                     // If the choice is not empty
                     if !choice.isEmpty {
@@ -125,7 +130,6 @@ class Game {
             
             // The player's team is ready
             print("The team of \(player.name) is ready!")
-            
         }
         
         //Both teams are ready
@@ -133,16 +137,16 @@ class Game {
         
         // Go to the fight
         fightTime()
-        
     }
     
-    // Fight time
+    /// Fighting time, continues until there is a loser
     static func fightTime() {
         // There is a loser ?
         var thereIsALoser = false
         
         // Fight continues until a player lose
         while thereIsALoser == false {
+            
             // Hero chosen
             var heroChosen: Hero
             // Target chosen
@@ -153,6 +157,7 @@ class Game {
             guard let hero = playingPlayer.chooseHeroFromYourTeam() else {
                 return
             }
+            
             // Assign value to heroChosen
             heroChosen = hero
             
@@ -200,12 +205,13 @@ class Game {
         
         // When the fight is done
         print("Soon the step 3 : the weapon switch !!")
-        
     }
     
-    // Show credits
+    /// The credits for this awesome game !
     static func showCredits() {
+        // print the message
         print("This awesome game is developped by Jérôme Krakus !")
+        
         // Return to the start menu
         Game.start()
     }

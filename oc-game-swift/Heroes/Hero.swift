@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Create the Hero class
+// Create the Hero class
 class Hero {
     // MARK: Properties
     // Name of the hero
@@ -21,6 +21,7 @@ class Hero {
     let maxLife: Int
     // Life of the hero
     var life: Int {
+        // Before the life change
         willSet {
             if newValue > life {
                 print("\(self.name) is about to get heal")
@@ -28,6 +29,7 @@ class Hero {
                 print("\(self.name) is about to get attack")
             }
         }
+        // After the life change
         didSet {
             if oldValue > life {
                 print("\(self.name) lose \(oldValue - life) HP, outch !")
@@ -39,7 +41,12 @@ class Hero {
     // Is still alive ?
     var isDead = false
     
-    // MARK: - Init
+    // MARK: - Methods
+    /// Init the Hero class
+    /// - name: String, The hero's name
+    /// - type: HeroType, The type of hero
+    /// - life: Int, The hero's life, according to the type
+    /// - damage: Int, The hero's damage, according to the type
     init(name: String, type: HeroType, life: Int, damage: Int) {
         self.name = name
         self.type = type
@@ -48,8 +55,9 @@ class Hero {
         self.maxLife = life
     }
     
-    // MARK: - Methods
-    // Description
+    
+    /// Description of the hero
+    /// - return: String
     func description() -> String {
         if isDead {
             return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
@@ -58,7 +66,8 @@ class Hero {
         }
     }
     
-    // Attack a hero
+    /// Attacking the hero whos targeting
+    /// - target: Hero
     func attackHero(_ target: Hero) {
         // Amount of damage
         target.life -= self.damage
@@ -68,5 +77,4 @@ class Hero {
             target.isDead = true
         }
     }
-    
 }

@@ -8,9 +8,8 @@
 
 import Foundation
 
-// MARK : - Create sword
+// Create the Sword class
 class Sword {
-    // MARK: Properties
     // Damage
     static var damage = 10
 }

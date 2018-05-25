@@ -22,15 +22,15 @@ class Player {
     var isALoser = false
     
     // MARK: - Methods
-    /// Init
-    /// - name: String. Create a player with the name chosen
+    /// Init of Player class
+    /// - name: String, Create a player with the name chosen
     init(name: String) {
         self.name = name
     }
     
-    /// Create hero
-    /// - player: Player. Adding the hero to the player heroTeam array
-    /// - choice: HeroType. Create and adding the type of hero the player choose
+    /// Adding the chosen hero to the player heroTeam array
+    /// - player: Player, The one who chose the hero
+    /// - choice: HeroType, The choice of the player
     func createHero(player: Player, choice: HeroType) {
         // A check for hero creation
         var heroWasCreated = false
@@ -45,7 +45,7 @@ class Player {
                 // Check if the name is already taken
                 if Game.heroesNames.contains(name) {
                     print("This name is already taken")
-                } else if name.isEmpty {
+                } else if name.isEmpty{
                     // Check if the name is empty
                     print("Srsly? Everytime? Choose a name...")
                 } else { // If not
@@ -94,17 +94,13 @@ class Player {
             if let hero = chooseHero(self) {
                 heroChosen = true
                 return hero
-            } else {
-                // If the selection of hero fails
-                print("You can't choose a hero...")
-                return nil
             }
         }
     }
     
-    /// Choosing a hero
-    /// - player: Player. Have to choose a hero to attack
-    /// - return: The selected hero
+    /// Player have to choose a hero to attack
+    /// - player: Player, The one who chose
+    /// - return: Hero?, The selected hero
     func chooseHeroToAttack(_ player: Player) -> Hero? {
         // Hero is choose ?
         var heroChosen = false
@@ -122,17 +118,12 @@ class Player {
             if let targetHero = chooseHero(player) {
                 heroChosen = true
                 return targetHero
-            } else {
-                // If the selection of hero fails
-                print("You can't choose a hero...")
-                return nil
             }
         }
     }
     
-    /// Choosing a hero
-    /// - Player have to choose a hero to heal with the healer
-    /// - return: The selected hero
+    /// Player have to choose a hero to heal with the healer
+    /// - return: Hero?, The selected hero
     func chooseHeroToHeal() -> Hero? {
         // Hero is choose ?
         var heroChosen = false
@@ -150,17 +141,13 @@ class Player {
             if let heroToHeal = chooseHero(self) {
                 heroChosen = true
                 return heroToHeal
-            } else {
-                // If the selection of hero fails
-                print("You can't choose a hero...")
-                return nil
             }
         }
     }
     
-    /// Choosing a hero
-    /// - player: Player. Have to choose a hero
-    /// - return: The selected hero
+    /// Choosing a hero from heroTeam array
+    /// - player: Player, The one who chose
+    /// - return: Hero?, The selected hero
     private func chooseHero(_ player: Player) -> Hero? {
         // Read the choice
         if let choice = readLine() {
@@ -192,8 +179,8 @@ class Player {
         return nil
     }
     
-    /// Check the life of hero
-    /// - hero: Hero. Hero the player want to fight / choose
+    /// Check the life of hero chosen
+    /// - hero: Hero. Hero chosen
     /// - return: Bool. If is dead or not
     private func heroIsAlive(_ hero: Hero) -> Bool {
         if hero.isDead == false {
@@ -206,22 +193,13 @@ class Player {
         }
         
     }
-
-    /// Check for dead heroes
-    /// - After each turns, check if a player lose the fight
+    
+    /// Check for dead heroes in the player team
     func loserCheck() {
-        // Heroes count
-        var deadHeroes = 0
-        // Check heroes status
-        for hero in self.heroTeam{
-            // If dead
-            if hero.isDead {
-                // Add to deadHeroes
-                deadHeroes += 1
-            }
-        }
+        // Checking deadHeroes
+        let deadHeroes = self.heroTeam.filter { $0.isDead }
         // There is a loser ?
-        if deadHeroes == maxHeroes {
+        if deadHeroes.count == maxHeroes {
             // If a player has 3 heroes dead
             self.isALoser = true
         }

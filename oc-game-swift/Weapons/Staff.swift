@@ -8,9 +8,8 @@
 
 import Foundation
 
-// MARK : - Create staff
+// Create the Staff class
 class Staff {
-    // MARK: Properties
     // Healing
     static var healing = 5
     // Damage

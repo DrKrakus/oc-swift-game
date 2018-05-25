@@ -8,9 +8,8 @@
 
 import Foundation
 
-// MARK : - Create shield
+// Create the Shield class
 class Shield {
-    // MARK: Properties
     // Damage
     static var damage = 8
 }
