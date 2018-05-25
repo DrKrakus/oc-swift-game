@@ -10,30 +10,10 @@ import Foundation
 
 // MARK: - Fighter class
 class Fighter: Hero {
-    // MARK: - Properties
-    // Damage
-    var damage = Sword.damage
     
-    
-    // MARK: - Methods
-    // Description
-    override func description() -> String {
-        if self.isDead {
-            return super.description()
-        } else {
-           return super.description() + " -- \(damage) dmg"
-        }
-    }
-    
-    // Attack a hero
-    func attackHero(_ target: Hero) {
-        // Amount of damage
-        target.life -= self.damage
-        
-        // If the target is dead
-        if target.life <= 0 {
-            target.isDead = true
-        }
+    // Init
+    init(name: String) {
+        super.init(name: name, type: .fighter, life: 100, damage: Sword.damage)
     }
     
 }

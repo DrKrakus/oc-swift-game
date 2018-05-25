@@ -174,17 +174,10 @@ class Game {
             }
             
             // Attack or Heal phase according to the type of hero
-            if let hero = heroChosen as? Fighter {
-                hero.attackHero(targetChosen)
-            } else if let hero = heroChosen as? Healer {
+            if let hero = heroChosen as? Healer {
                 hero.healHero(targetChosen)
-            } else if let hero = heroChosen as? Dwarf {
-                hero.attackHero(targetChosen)
-            } else if let hero = heroChosen as? Colossus {
-                hero.attackHero(targetChosen)
             } else {
-                print("WTF ??")
-                return
+                hero.attackHero(targetChosen)
             }
             
             // Checking for a loser

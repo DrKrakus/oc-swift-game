@@ -10,28 +10,11 @@ import Foundation
 
 // MARK: - Dwarf class
 class Dwarf: Hero {
-    // MARK: Properties
-    // Damage
-    var damage = Axe.damage
     
-    // MARK: Methods
-    // Description
-    override func description() -> String {
-        if self.isDead {
-            return super.description()
-        } else {
-            return super.description() + " -- \(damage) dmg"
-        }
+    // Init
+    init(name: String) {
+        super.init(name: name, type: .dwarf, life: 75, damage: Axe.damage)
     }
-    // Attack a hero
-    func attackHero(_ target: Hero) {
-        // Amount of damage
-        target.life -= self.damage
-        
-        // If the target is dead
-        if target.life <= 0 {
-            target.isDead = true
-        }
-    }
+    
 }
 

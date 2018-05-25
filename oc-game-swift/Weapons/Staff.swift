@@ -13,4 +13,6 @@ class Staff {
     // MARK: Properties
     // Healing
     static var healing = 5
+    // Damage
+    static var damage = 0
 }

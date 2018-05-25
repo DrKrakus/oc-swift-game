@@ -10,27 +10,10 @@ import Foundation
 
 // MARK: - Colossus class
 class Colossus: Hero {
-    // MARK: Properties
-    // Damage
-    var damage = Shield.damage
     
-    // MARK: Methods
-    // Description
-    override func description() -> String {
-        if self.isDead {
-            return super.description()
-        } else {
-            return super.description() + " -- \(damage) dmg"
-        }
+    // Init
+    init(name: String) {
+        super.init(name: name, type: .colossus, life: 150, damage: Shield.damage)
     }
-    // Attack a hero
-    func attackHero(_ target: Hero) {
-        // Amount of damage
-        target.life -= self.damage
-        
-        // If the target is dead
-        if target.life <= 0 {
-            target.isDead = true
-        }
-    }
+    
 }
