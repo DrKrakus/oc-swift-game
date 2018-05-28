@@ -219,7 +219,7 @@ class Game {
         let randomNumber = arc4random_uniform(99)
         
         // Check if the chest appears
-        guard randomNumber <= 10 else {
+        guard randomNumber <= 99 else {
             // If not, nothing append
             return
         }
@@ -256,9 +256,6 @@ class Game {
             + "\n-----------------------------------"
             + "\n \(bonusChest) bonus chest(s) pop in during this game"
             + "\n-----------------------------------")
-        
-        // Return to the start menu
-        start()
     }
     
     /// The credits for this awesome game !
