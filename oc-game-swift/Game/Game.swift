@@ -227,11 +227,11 @@ class Game {
             + "\n-----------------------------------")
         
         if let hero = heroChoosen as? Healer {
-            hero.healing = 20
-            print("\(hero.name) can heal for \(hero.healing) now!")
+            hero.weapon.healing = 20
+            print("\(hero.name) can heal for \(hero.weapon.healing) now!")
         } else {
-            heroChoosen.damage += 5
-            print("\(heroChoosen.name) deal \(heroChoosen.damage)DMG now!")
+            heroChoosen.weapon.damage += 5
+            print("\(heroChoosen.name) deal \(heroChoosen.weapon.damage)DMG now!")
         }
     }
     

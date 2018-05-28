@@ -16,7 +16,7 @@ class Hero {
     // Type of the hero
     var type: HeroType
     // damage
-    var damage: Int
+    var weapon: Weapon
     // Maximum of life
     let maxLife: Int
     // Life of the hero
@@ -47,12 +47,12 @@ class Hero {
     /// - type: HeroType, The type of hero
     /// - life: Int, The hero's life, according to the type
     /// - damage: Int, The hero's damage, according to the type
-    init(name: String, type: HeroType, life: Int, damage: Int) {
+    init(name: String, type: HeroType, life: Int, weapon: Weapon) {
         self.name = name
         self.type = type
-        self.damage = damage
         self.life = life
         self.maxLife = life
+        self.weapon = weapon
     }
     
     
@@ -62,7 +62,7 @@ class Hero {
         if isDead {
             return "\(name) || \(type) 💀 DIED IN COMBAT 💀"
         } else {
-            return "\(name) || \(type) -- \(life)/\(maxLife)HP -- doing \(damage) DMG"
+            return "\(name) || \(type) -- \(life)/\(maxLife)HP -- doing \(weapon.damage) DMG"
         }
     }
     
@@ -70,7 +70,7 @@ class Hero {
     /// - target: Hero
     func attackHero(_ target: Hero) {
         // Amount of damage
-        target.life -= self.damage
+        target.life -= self.weapon.damage
         
         // If the target is dead
         if target.life <= 0 {

@@ -9,7 +9,9 @@
 import Foundation
 
 // Create the Axe class
-class Axe {
-    // Damage
-    static var damage = 20
+class Axe: Weapon {
+    // Init from Weapon
+    init() {
+        super.init(damage: 20, healing: 0)
+    }
 }
