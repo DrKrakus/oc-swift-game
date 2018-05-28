@@ -22,4 +22,28 @@ class EpicWeapon: Weapon {
         self.maxHealing = maxHealing
         super.init(damage: damage, healing: healing)
     }
+    
+    /// Buff himself from random chest
+    func buffHisStats(){
+        // Check the weapon
+        if self is EpicStaff {
+            // If its already at maxHeal
+            guard healing < maxHealing else {
+                print("Your weapon is already at his max healing power, it can't be buff")
+                return
+            }
+            // If not, buff the heal
+            self.healing += 2
+            print("Your epic weapon is buffed ! You heal by \(self.healing) now!")
+        } else {
+            // If its already at maxDamage
+            guard damage < maxDamage else {
+                print("Your weapon is already at his max damage dealing, it can't be buff")
+                return
+            }
+            // If not, buff the damage
+            self.damage += 5
+            print("Your epic weapon is buffed ! You deal \(self.damage) DMG now!")
+        }
+    }
 }

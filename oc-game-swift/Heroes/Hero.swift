@@ -77,4 +77,60 @@ class Hero {
             target.isDead = true
         }
     }
+    
+    /// Switching weapon from the random bonus chest
+    func switchWeapon() {
+        // For the healer
+        if let hero = self as? Healer {
+            // Switch weapon
+            if hero.weapon is Staff {
+                hero.weapon = EpicStaff()
+                print("\(hero.name) switch of weapon ! Healing by \(hero.weapon.healing) now !")
+                return
+            }
+            // If already switch, buff the weapon
+            if let epicweapon = hero.weapon as? EpicStaff {
+                epicweapon.buffHisStats()
+            }
+        }
+        // For the fighter
+        if let hero = self as? Fighter {
+            // Switch weapon
+            if hero.weapon is Sword {
+                hero.weapon = EpicSword()
+                print("\(hero.name) switch of weapon ! Dealing \(hero.weapon.damage) DMG now !")
+                return
+            }
+            // If already switch, buff the weapon
+            if let epicweapon = hero.weapon as? EpicSword {
+                epicweapon.buffHisStats()
+            }
+        }
+        // For the dwarf
+        if let hero = self as? Dwarf {
+            // Switch weapon
+            if hero.weapon is Axe {
+                hero.weapon = EpicAxe()
+                print("\(hero.name) switch of weapon ! Dealing \(hero.weapon.damage) DMG now !")
+                return
+            }
+            // If already switch, buff the weapon
+            if let epicweapon = hero.weapon as? EpicAxe {
+                epicweapon.buffHisStats()
+            }
+        }
+        // For the fighter
+        if let hero = self as? Colossus {
+            // Switch weapon
+            if hero.weapon is Shield {
+                hero.weapon = EpicShield()
+                print("\(hero.name) switch of weapon ! Dealing \(hero.weapon.damage) DMG now !")
+                return
+            }
+            // If already switch, buff the weapon
+            if let epicweapon = hero.weapon as? EpicShield {
+                epicweapon.buffHisStats()
+            }
+        }
+    }
 }

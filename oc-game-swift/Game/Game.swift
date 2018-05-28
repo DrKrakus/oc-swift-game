@@ -226,13 +226,8 @@ class Game {
             + "\n 🎁  A bonus chest appears ! 🎁"
             + "\n-----------------------------------")
         
-        if let hero = heroChoosen as? Healer {
-            hero.weapon.healing = 20
-            print("\(hero.name) can heal for \(hero.weapon.healing) now!")
-        } else {
-            heroChoosen.weapon.damage += 5
-            print("\(heroChoosen.name) deal \(heroChoosen.weapon.damage)DMG now!")
-        }
+        // Switch weapon
+        heroChoosen.switchWeapon()
     }
     
     /// The credits for this awesome game !
