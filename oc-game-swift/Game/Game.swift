@@ -161,9 +161,6 @@ class Game {
             // Assign value to heroChosen
             heroChosen = hero
             
-            // Random bonus chest
-            isChestPop(heroChosen)
-            
             // Playing player choose a target to attack or heal
             if heroChosen.type == .healer {
                 // Guard for target selection
@@ -208,31 +205,6 @@ class Game {
         
         // When the fight is done
         print("Soon the step 3 : the weapon switch !!")
-    }
-    
-    /// Random chest can pop
-    private static func isChestPop(_ heroChoosen: Hero) {
-        // Create a random number between 0 and 99
-        let randomNumber = arc4random_uniform(99)
-        
-        // Check if the chest appears
-        guard randomNumber <= 10 else {
-            // If not, nothing append
-            return
-        }
-        
-        // Print the message
-        print("-----------------------------------"
-            + "\n 🎁  A bonus chest appears ! 🎁"
-            + "\n-----------------------------------")
-        
-        if let hero = heroChoosen as? Healer {
-            hero.healing = 20
-            print("\(hero.name) can heal for \(hero.healing) now!")
-        } else {
-            heroChoosen.damage += 5
-            print("\(heroChoosen.name) deal \(heroChoosen.damage)DMG now!")
-        }
     }
     
     /// The credits for this awesome game !
