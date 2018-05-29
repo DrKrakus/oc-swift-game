@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+// Create the Axe class
+class Axe {
+    // Damage
+    static var damage = 20
+}

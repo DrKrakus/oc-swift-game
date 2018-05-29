@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+// Create the Shield class
+class Shield {
+    // Damage
+    static var damage = 8
+}

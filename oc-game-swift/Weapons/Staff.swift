@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+// Create the Staff class
+class Staff {
+    // Healing
+    static var healing = 5
+    // Damage
+    static var damage = 0
+}

@@ -8,26 +8,40 @@
 
 import Foundation
 
-// MARK: - Create the Game class
+// Create the Game class
 class Game {
     // MARK: Properties
     // Array of players
     static var playerList: [Player] = []
     // The maximum of players per game
     static let maxPlayers = 2
+    // Array of the heroes names
+    static var heroesNames: [String] = []
+    // Number of turns
+    static var numberOfTurns = 1
+    // Playing player
+    static var playingPlayer: Player {
+        return Game.playerList[numberOfTurns % 2]
+    }
+    // Target player
+    static var targetPlayer: Player {
+        return Game.playerList[(numberOfTurns + 1) % 2]
+    }
     
     // MARK: - Methods
-    // Start menu
+    /// The starting menu
     static func start() {
-        
-        print("\n----------------------"
-            + "\nSWIFT TO THE DEATH"
-            + "\n----------------------"
-            + "\n"
-            + "\n Select an option"
-            + "\n"
-            + "\n1. Start New Game"
-            + "\n2. Credits")
+        // Print the menu
+        print("""
+            ----------------------
+            SWIFT TO THE DEATH
+            ----------------------
+            
+            Select an option
+            
+            1. Start New Game
+            2. Credits
+            """)
         
         // If options 1 or 2 are choosen
         if let line = readLine(){
@@ -42,23 +56,20 @@ class Game {
                 Game.start()
             }
         }
-        
     }
     
-    // Show credits
-    static func showCredits() {
-        print("This awesome game is developped by Jérôme Krakus !")
-        // Return to the start menu
-        Game.start()
-    }
-    
-    // Create players
+    /// Create the players for the game
     static func createPlayers() {
         // While there is no all the players for the game
         while Game.playerList.count < Game.maxPlayers {
-            print("---------------------------------------------------"
-                + "\nChoose your name player \(Game.playerList.count + 1)"
-                + "\n---------------------------------------------------")
+            
+            // Print the message
+            print("""
+                ---------------------------------------------------
+                Choose your name player \(Game.playerList.count + 1)
+                ---------------------------------------------------
+                """)
+            
             // Read the name of player
             if let name = readLine(){
                 if !name.isEmpty {
@@ -70,27 +81,31 @@ class Game {
                 }
             }
         }
-        // When all the players are created, go to the hero selection
-        pickAHeroMenu()
         
+        // When all the players are created, go to the hero selection
+        Game.pickAHeroMenu()
     }
     
-    // Hero selection menu
+    /// The player have to choose heroes for his team
     static func pickAHeroMenu() {
         // Each player choose their heroes
         for player in Game.playerList {
+            
             // While one player doesnt have all their heroes
             while player.heroTeam.count < player.maxHeroes {
                 
-                print("-----------------------------------"
-                    + "\n\(player.name) choose \(3 - player.heroTeam.count) heroes"
-                    + "\n-----------------------------------"
-                    + "\n 1. Fighter - Basic, strong, your best friend here"
-                    + "\n 2. Healer - You should really think about him for your team"
-                    + "\n 3. Dwarf - Fearless and powerfull, but weak too"
-                    + "\n 4. Colossus - Tanky as fuck, but make less damage than your little sister")
+                // Print the message
+                print("""
+                    -----------------------------------
+                    \(player.name) choose \(3 - player.heroTeam.count) heroes
+                    -----------------------------------
+                    1. Fighter - Basic, strong, your best friend here
+                    2. Healer - You should really think about him for your team
+                    3. Dwarf - Fearless and powerfull, but weak too
+                    4. Colossus - Tanky as fuck, but make less damage than your little sister
+                    """)
                 
-                // Check the awnser
+                // Read the answer
                 if let choice = readLine() {
                     // If the choice is not empty
                     if !choice.isEmpty {
@@ -98,16 +113,16 @@ class Game {
                         switch choice {
                         case "1":
                             // Create a Fighter
-                            Player.createHero(player: player, choice: HeroType.fighter)
+                            player.createHero(player: player, choice: HeroType.fighter)
                         case "2":
                             // Create a Healer
-                            Player.createHero(player: player, choice: HeroType.healer)
+                            player.createHero(player: player, choice: HeroType.healer)
                         case "3":
                             // Create a Dwarf
-                            Player.createHero(player: player, choice: HeroType.dwarf)
+                            player.createHero(player: player, choice: HeroType.dwarf)
                         case "4":
                             // Create a Colossus
-                            Player.createHero(player: player, choice: HeroType.colossus)
+                            player.createHero(player: player, choice: HeroType.colossus)
                         default:
                             // If the choice is not 1, 2, 3 or 4
                             print("Sorry, are you... 😬")
@@ -119,15 +134,101 @@ class Game {
                 }
             }
             
-            // The player's team is ready !
+            // The player's team is ready
             print("The team of \(player.name) is ready!")
+        }
+        
+        //Both teams are ready
+        print("Both teams are ready, prepare to fight!")
+        
+        // Go to the fight
+        fightTime()
+    }
+    
+    /// Fighting time, continues until there is a loser
+    static func fightTime() {
+        // There is a loser ?
+        var thereIsALoser = false
+        
+        // Fight continues until a player lose
+        while thereIsALoser == false {
+            // Playing player choose a hero of his team
+            // Guard for a valid Hero
+            guard let hero = playingPlayer.chooseHeroFromYourTeam() else {
+                return
+            }
+            
+            // Assign value to heroChosen
+            playingPlayer.heroChosen = hero
+            
+            // Playing player choose a target to attack or heal
+            if playingPlayer.heroChosen is Healer {
+                // Guard for selection of the target to heal
+                guard let target = playingPlayer.chooseHeroFromYourTeam() else {
+                    return
+                }
+                // Assign value to targetchosen
+                playingPlayer.targetChosen = target
+            } else {
+                // Guard for selection target to attack
+                guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
+                    return
+                }
+                // Assign value to targetchosen
+                playingPlayer.targetChosen = target
+            }
+            
+            // heroChosen Attack or Heal
+            if let hero = playingPlayer.heroChosen as? Healer {
+                // Unwrap the targetChosen
+                guard let target = playingPlayer.targetChosen else {
+                    return
+                }
+                hero.healHero(target)
+            } else {
+                // Unwrap the targetChosen
+                guard let target = playingPlayer.targetChosen else {
+                    return
+                }
+                hero.attackHero(target)
+            }
+            
+            // Checking for a loser
+            playingPlayer.loserCheck()
+            targetPlayer.loserCheck()
+            
+            // If a loser was found
+            for player in Game.playerList {
+                if player.isALoser == true {
+                    print("""
+                        All the heroes of \(player.name) are dead...
+                        💩 \(player.name) you lose! 💩
+                        """)
+                    thereIsALoser = true
+                }
+            }
+            
+            
+            // Else, adding a turn and continue the fight
+            numberOfTurns += 1
+            
+            // And reset heroChosen and targetChosen
+            playingPlayer.heroChosen = nil
+            playingPlayer.targetChosen = nil
             
         }
         
-        //Both teams are ready to fight!
-        print("Both teams are ready, prepare to fight!")
+        // When the fight is done
+        print("Soon the step 3 : the weapon switch !!")
+    }
+    
+    /// The credits for this awesome game !
+    static func showCredits() {
+        // print the message
+        print("This awesome game is developped by Jérôme Krakus !")
         
-        
+        // Return to the start menu
+        Game.start()
     }
     
 }
