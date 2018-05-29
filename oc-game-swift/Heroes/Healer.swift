@@ -37,7 +37,7 @@ class Healer: Hero {
     func healHero(_ target: Hero) {
         // No overheal allowed
         guard target.life != target.maxLife else {
-            print("You're wasting your turn, he's already full life...")
+            print("You're wasted your turn, he's already full life...")
             return
         }
         
