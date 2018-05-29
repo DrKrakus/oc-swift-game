@@ -234,7 +234,7 @@ class Game {
         let randomNumber = arc4random_uniform(99)
         
         // Check if the chest appears
-        guard randomNumber <= 10 else {
+        guard randomNumber <= 9 else {
             // If not, nothing append
             return
         }
