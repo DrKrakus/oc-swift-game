@@ -34,14 +34,16 @@ class Game {
     /// The starting menu
     static func start() {
         // Print the menu
-        print("\n----------------------"
-            + "\nSWIFT TO THE DEATH"
-            + "\n----------------------"
-            + "\n"
-            + "\n Select an option"
-            + "\n"
-            + "\n1. Start New Game"
-            + "\n2. Credits")
+        print("""
+            ----------------------
+            SWIFT TO THE DEATH
+            ----------------------
+            
+            Select an option
+            
+            1. Start New Game
+            2. Credits
+            """)
         
         // If options 1 or 2 are choosen
         if let line = readLine(){
@@ -64,9 +66,11 @@ class Game {
         while Game.playerList.count < Game.maxPlayers {
             
             // Print the message
-            print("---------------------------------------------------"
-                + "\nChoose your name player \(Game.playerList.count + 1)"
-                + "\n---------------------------------------------------")
+            print("""
+                ---------------------------------------------------
+                Choose your name player \(Game.playerList.count + 1)
+                ---------------------------------------------------
+                """)
             
             // Read the name of player
             if let name = readLine(){
@@ -93,13 +97,15 @@ class Game {
             while player.heroTeam.count < player.maxHeroes {
                 
                 // Print the message
-                print("-----------------------------------"
-                    + "\n\(player.name) choose \(3 - player.heroTeam.count) heroes"
-                    + "\n-----------------------------------"
-                    + "\n 1. Fighter - Basic, strong, your best friend here"
-                    + "\n 2. Healer - You should really think about him for your team"
-                    + "\n 3. Dwarf - Fearless and powerfull, but weak too"
-                    + "\n 4. Colossus - Tanky as fuck, but make less damage than your little sister")
+                print("""
+                    -----------------------------------
+                    \(player.name) choose \(3 - player.heroTeam.count) heroes
+                    -----------------------------------
+                    1. Fighter - Basic, strong, your best friend here
+                    2. Healer - You should really think about him for your team
+                    3. Dwarf - Fearless and powerfull, but weak too
+                    4. Colossus - Tanky as fuck, but make less damage than your little sister
+                    """)
                 
                 // Read the answer
                 if let choice = readLine() {
@@ -148,12 +154,6 @@ class Game {
         
         // Fight continues until a player lose
         while thereIsALoser == false {
-            
-            // Hero chosen
-            var heroChosen: Hero
-            // Target chosen
-            var targetChosen: Hero
-            
             // Playing player choose a hero of his team
             // Guard for a valid Hero
             guard let hero = playingPlayer.chooseHeroFromYourTeam() else {
@@ -161,33 +161,41 @@ class Game {
             }
             
             // Assign value to heroChosen
-            heroChosen = hero
+            playingPlayer.heroChosen = hero
             
             // Random bonus chest
-            isChestPop(heroChosen)
+            isChestPop(playingPlayer.heroChosen)
             
             // Playing player choose a target to attack or heal
-            if heroChosen.type == .healer {
-                // Guard for target selection
-                guard let target = playingPlayer.chooseHeroToHeal() else {
+            if playingPlayer.heroChosen is Healer {
+                // Guard for selection of the target to heal
+                guard let target = playingPlayer.chooseHeroFromYourTeam() else {
                     return
                 }
                 // Assign value to targetchosen
-                targetChosen = target
+                playingPlayer.targetChosen = target
             } else {
-                // Guard for target selection
+                // Guard for selection target to attack
                 guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
                     return
                 }
                 // Assign value to targetchosen
-                targetChosen = target
+                playingPlayer.targetChosen = target
             }
             
-            // Attack or Heal phase according to the type of hero
-            if let hero = heroChosen as? Healer {
-                hero.healHero(targetChosen)
+            // heroChosen Attack or Heal
+            if let hero = playingPlayer.heroChosen as? Healer {
+                // Unwrap the targetChosen
+                guard let target = playingPlayer.targetChosen else {
+                    return
+                }
+                hero.healHero(target)
             } else {
-                hero.attackHero(targetChosen)
+                // Unwrap the targetChosen
+                guard let target = playingPlayer.targetChosen else {
+                    return
+                }
+                hero.attackHero(target)
             }
             
             // Checking for a loser
@@ -196,16 +204,23 @@ class Game {
             
             // If a loser was found
             for player in Game.playerList {
-                if player.isALoser == true {
-                    print("-----------------------------------"
-                        + "\nAll the heroes of \(player.name) are dead..."
-                        + "\n💩 \(player.name) you lose! 💩")
+                if player.isALoser {
+                    print("""
+                        -----------------------------------
+                        All the heroes of \(player.name) are dead...
+                        💩 \(player.name) you lose! 💩
+                        """)
                     thereIsALoser = true
                 }
             }
             
+            
             // Else, adding a turn and continue the fight
             numberOfTurns += 1
+            
+            // And reset heroChosen and targetChosen
+            playingPlayer.heroChosen = nil
+            playingPlayer.targetChosen = nil
             
         }
         
@@ -214,7 +229,7 @@ class Game {
     }
     
     /// Random chest can pop
-    private static func isChestPop(_ heroChoosen: Hero) {
+    private static func isChestPop(_ hero: Hero?) {
         // Create a random number between 0 and 99
         let randomNumber = arc4random_uniform(99)
         
@@ -225,15 +240,19 @@ class Game {
         }
         
         // Print the message
-        print("-----------------------------------"
-            + "\n 🎁  A bonus chest appears ! 🎁"
-            + "\n-----------------------------------")
+        print("""
+            -----------------------------------
+            🎁  A bonus chest appears ! 🎁
+            -----------------------------------
+            """)
         
         // Add a chest to bonusChest count
         bonusChest += 1
         
         // Switch weapon
-        heroChoosen.switchWeapon()
+        if let hero = playingPlayer.heroChosen {
+            hero.switchWeapon()
+        }
     }
     
     /// The stats of the game
@@ -242,20 +261,17 @@ class Game {
         let winner = Game.playerList.filter { $0.isALoser == false }
         
         // Print the message
-        print("-----------------------------------"
-            + "\n✋ THE GAME IS OVER 🤚"
-            + "\n-----------------------------------"
-            + "\nThe winner is : \(winner[0].name)"
-            + "\n-----------------------------------"
-            + "\nThis is his team after the fight:"
-            + "\n\(winner[0].heroTeam[0].description())"
-            + "\n\(winner[0].heroTeam[1].description())"
-            + "\n\(winner[0].heroTeam[2].description())"
-            + "\n-----------------------------------"
-            + "\n This game was finished in \(numberOfTurns) turns"
-            + "\n-----------------------------------"
-            + "\n \(bonusChest) bonus chest(s) pop in during this game"
-            + "\n-----------------------------------")
+        print("""
+            -----------------------------------
+            ✋ THE GAME IS OVER 🤚
+            -----------------------------------
+            The winner is : \(winner[0].name)
+            -----------------------------------
+            This game was finished in \(numberOfTurns) turns
+            -----------------------------------
+            \(bonusChest) bonus chest(s) pop in during this game
+            -----------------------------------
+            """)
     }
     
     /// The credits for this awesome game !
