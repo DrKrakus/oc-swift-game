@@ -36,10 +36,8 @@ class Player {
     /// - player: Player, The one who chose the hero
     /// - choice: HeroType, The choice of the player
     func createHero(player: Player, choice: HeroType) {
-        // A check for hero creation
-        var heroWasCreated = false
         // While the picked hero is not create
-        while heroWasCreated == false {
+        while true {
             // Asking for name
             print("""
                 -----------------------------------
@@ -75,7 +73,7 @@ class Player {
                     // Add the name to the array of heroes names
                     Game.heroesNames.append(name)
                     // Turn the check on true
-                    heroWasCreated = true
+                    return
                 }
             }
         }
@@ -85,7 +83,7 @@ class Player {
     /// - Player have to choose a hero of his team
     /// - return: The selected hero
     func chooseHeroFromYourTeam() -> Hero? {
-        // While not
+        // While no hero chosen
         while true {
             // Print this message if no hero has been chosen
             if heroChosen == nil {
@@ -118,10 +116,8 @@ class Player {
     /// - player: Player, The one who chose
     /// - return: Hero?, The selected hero
     func chooseHeroToAttack(_ player: Player) -> Hero? {
-        // Hero is choose ?
-        var playerChoice = false
-        // While not
-        while playerChoice == false {
+        // While no hero chosen
+        while true {
             // Print the message
             print("""
                 -----------------------------------
@@ -134,7 +130,6 @@ class Player {
             
             // Choose a hero
             if let targetHero = chooseHero(player) {
-                playerChoice = true
                 return targetHero
             }
         }

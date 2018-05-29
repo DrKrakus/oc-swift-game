@@ -202,7 +202,7 @@ class Game {
             
             // If a loser was found
             for player in Game.playerList {
-                if player.isALoser == true {
+                if player.isALoser {
                     print("""
                         All the heroes of \(player.name) are dead...
                         💩 \(player.name) you lose! 💩
