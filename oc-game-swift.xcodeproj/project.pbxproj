@@ -20,6 +20,12 @@
 		7F65135320AF00E7001AC156 /* Shield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135220AF00E7001AC156 /* Shield.swift */; };
 		7F65135520AF00F2001AC156 /* Staff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135420AF00F2001AC156 /* Staff.swift */; };
 		7F65135820AF0115001AC156 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65135720AF0115001AC156 /* Game.swift */; };
+		7F697DBC20BBF4D70006EBB2 /* EpicAxe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DBB20BBF4D70006EBB2 /* EpicAxe.swift */; };
+		7F697DBE20BBF4E90006EBB2 /* EpicStaff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DBD20BBF4E90006EBB2 /* EpicStaff.swift */; };
+		7F697DC020BBF4FB0006EBB2 /* EpicSword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DBF20BBF4FB0006EBB2 /* EpicSword.swift */; };
+		7F697DC220BBF50A0006EBB2 /* EpicShield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DC120BBF50A0006EBB2 /* EpicShield.swift */; };
+		7F697DC420BBF6470006EBB2 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DC320BBF6470006EBB2 /* Weapon.swift */; };
+		7F697DC620BBF8740006EBB2 /* EpicWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F697DC520BBF8740006EBB2 /* EpicWeapon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +55,12 @@
 		7F65135220AF00E7001AC156 /* Shield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shield.swift; sourceTree = "<group>"; };
 		7F65135420AF00F2001AC156 /* Staff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staff.swift; sourceTree = "<group>"; };
 		7F65135720AF0115001AC156 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7F697DBB20BBF4D70006EBB2 /* EpicAxe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicAxe.swift; sourceTree = "<group>"; };
+		7F697DBD20BBF4E90006EBB2 /* EpicStaff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicStaff.swift; sourceTree = "<group>"; };
+		7F697DBF20BBF4FB0006EBB2 /* EpicSword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicSword.swift; sourceTree = "<group>"; };
+		7F697DC120BBF50A0006EBB2 /* EpicShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicShield.swift; sourceTree = "<group>"; };
+		7F697DC320BBF6470006EBB2 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		7F697DC520BBF8740006EBB2 /* EpicWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpicWeapon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,12 @@
 				7F65135020AF00CF001AC156 /* Sword.swift */,
 				7F65135220AF00E7001AC156 /* Shield.swift */,
 				7F65135420AF00F2001AC156 /* Staff.swift */,
+				7F697DBB20BBF4D70006EBB2 /* EpicAxe.swift */,
+				7F697DBD20BBF4E90006EBB2 /* EpicStaff.swift */,
+				7F697DBF20BBF4FB0006EBB2 /* EpicSword.swift */,
+				7F697DC120BBF50A0006EBB2 /* EpicShield.swift */,
+				7F697DC320BBF6470006EBB2 /* Weapon.swift */,
+				7F697DC520BBF8740006EBB2 /* EpicWeapon.swift */,
 			);
 			path = Weapons;
 			sourceTree = "<group>";
@@ -190,16 +208,22 @@
 				7F65133E20AEF049001AC156 /* Axe.swift in Sources */,
 				7F65134520AEFFED001AC156 /* Fighter.swift in Sources */,
 				7F65134720AF000A001AC156 /* Healer.swift in Sources */,
+				7F697DC620BBF8740006EBB2 /* EpicWeapon.swift in Sources */,
 				7F65135820AF0115001AC156 /* Game.swift in Sources */,
 				7F65134120AEFFB4001AC156 /* HeroType.swift in Sources */,
 				7F65135320AF00E7001AC156 /* Shield.swift in Sources */,
 				7F65134B20AF006A001AC156 /* Colossus.swift in Sources */,
 				7F65135520AF00F2001AC156 /* Staff.swift in Sources */,
 				7F65135120AF00CF001AC156 /* Sword.swift in Sources */,
+				7F697DC220BBF50A0006EBB2 /* EpicShield.swift in Sources */,
+				7F697DBE20BBF4E90006EBB2 /* EpicStaff.swift in Sources */,
+				7F697DC020BBF4FB0006EBB2 /* EpicSword.swift in Sources */,
 				7F65133620AEEF60001AC156 /* main.swift in Sources */,
 				7F65134920AF0044001AC156 /* Dwarf.swift in Sources */,
 				7F65134F20AF00AE001AC156 /* Player.swift in Sources */,
 				7F65134320AEFFD6001AC156 /* Hero.swift in Sources */,
+				7F697DBC20BBF4D70006EBB2 /* EpicAxe.swift in Sources */,
+				7F697DC420BBF6470006EBB2 /* Weapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

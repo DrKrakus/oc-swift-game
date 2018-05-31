@@ -9,7 +9,9 @@
 import Foundation
 
 // Create the Shield class
-class Shield {
-    // Damage
-    static var damage = 8
+class Shield: Weapon {
+    // Init from Weapon
+    init() {
+        super.init(damage: 5, healing: 0)
+    }
 }

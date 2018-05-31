@@ -15,6 +15,6 @@ class Fighter: Hero {
     /// - name: String, Name of the fighter
     init(name: String) {
         // Take the init of Hero class
-        super.init(name: name, type: .fighter, life: 100, damage: Sword.damage)
+        super.init(name: name, type: .fighter, life: 100, weapon: Sword())
     }
 }

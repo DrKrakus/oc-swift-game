@@ -10,16 +10,13 @@ import Foundation
 
 // Create the Healer class
 class Healer: Hero {
-    // MARK: Properties
-    // Healing
-    var healing = Staff.healing
     
     // MARK: - Methods
     /// Init the Healer subclass
     /// - name: String, Name of the healer
     init(name: String) {
         // Take the init of Hero class
-        super.init(name: name, type: .healer, life: 125, damage: Staff.damage)
+        super.init(name: name, type: .healer, life: 125, weapon: Staff())
     }
     
     /// Description for the healer
@@ -31,7 +28,7 @@ class Healer: Hero {
             return super.description()
         } else {
             // Print his onw description
-            return "\(name) || \(type) -- \(life)/\(maxLife)HP -- healing by \(healing)"
+            return "\(name) || \(type) -- \(life)/\(maxLife)HP -- healing by \(weapon.healing)"
         }
     }
     
@@ -45,7 +42,7 @@ class Healer: Hero {
         }
         
         // If heal is possible
-        target.life += self.healing
+        target.life += self.weapon.healing
         
         // If the life > maxLife after healing
         if target.life > target.maxLife {

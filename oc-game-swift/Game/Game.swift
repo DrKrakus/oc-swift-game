@@ -19,6 +19,8 @@ class Game {
     static var heroesNames: [String] = []
     // Number of turns
     static var numberOfTurns = 1
+    // Number of bonus chest
+    static var bonusChest = 0
     // Playing player
     static var playingPlayer: Player {
         return Game.playerList[numberOfTurns % 2]
@@ -47,13 +49,13 @@ class Game {
         if let line = readLine(){
             switch line{
             case "1": // Move on to the player creation
-                Game.createPlayers()
+                createPlayers()
             case "2":
-                Game.showCredits()
+                showCredits()
             default: // If not
                 print("You have to choose 1 or 2 😅")
                 // Replay the start menu
-                Game.start()
+                start()
             }
         }
     }
@@ -83,7 +85,7 @@ class Game {
         }
         
         // When all the players are created, go to the hero selection
-        Game.pickAHeroMenu()
+        pickAHeroMenu()
     }
     
     /// The player have to choose heroes for his team
@@ -161,6 +163,9 @@ class Game {
             // Assign value to heroChosen
             playingPlayer.heroChosen = hero
             
+            // Random bonus chest
+            isChestPop(playingPlayer.heroChosen)
+            
             // Playing player choose a target to attack or heal
             if playingPlayer.heroChosen is Healer {
                 // Guard for selection of the target to heal
@@ -199,8 +204,9 @@ class Game {
             
             // If a loser was found
             for player in Game.playerList {
-                if player.isALoser == true {
+                if player.isALoser {
                     print("""
+                        -----------------------------------
                         All the heroes of \(player.name) are dead...
                         💩 \(player.name) you lose! 💩
                         """)
@@ -219,12 +225,55 @@ class Game {
         }
         
         // When the fight is done
-        print("Soon the step 3 : the weapon switch !!")
+        showEndStats()
+    }
+    
+    /// Random chest can pop
+    private static func isChestPop(_ hero: Hero?) {
+        // Check if the chest appears
+        guard arc4random_uniform(99) <= 9 else {
+            // If not, nothing append
+            return
+        }
+        
+        // Print the message
+        print("""
+            -----------------------------------
+            🎁  A bonus chest appears ! 🎁
+            -----------------------------------
+            """)
+        
+        // Add a chest to bonusChest count
+        bonusChest += 1
+        
+        // Switch weapon
+        if let hero = playingPlayer.heroChosen {
+            hero.switchWeapon()
+        }
+    }
+    
+    /// The stats of the game
+    static func showEndStats() {
+        // Take the winner from playerList
+        let winner = Game.playerList.filter { $0.isALoser == false }
+        
+        // Print the message
+        print("""
+            -----------------------------------
+            ✋ THE GAME IS OVER 🤚
+            -----------------------------------
+            The winner is : \(winner[0].name)
+            -----------------------------------
+            This game was finished in \(numberOfTurns) turns
+            -----------------------------------
+            \(bonusChest) bonus chest(s) pop in during this game
+            -----------------------------------
+            """)
     }
     
     /// The credits for this awesome game !
     static func showCredits() {
-        // print the message
+        // Print the message
         print("This awesome game is developped by Jérôme Krakus !")
         
         // Return to the start menu

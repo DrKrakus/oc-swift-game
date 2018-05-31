@@ -14,7 +14,7 @@ class Colossus: Hero {
     /// - name: String, Name of the colossus
     init(name: String) {
         // Take the init of Hero class
-        super.init(name: name, type: .colossus, life: 150, damage: Shield.damage)
+        super.init(name: name, type: .colossus, life: 150, weapon: Shield())
     }
     
 }

@@ -14,7 +14,7 @@ class Dwarf: Hero {
     /// - name: String, Name of the dwarf
     init(name: String) {
         // Take the init of Hero class
-        super.init(name: name, type: .dwarf, life: 75, damage: Axe.damage)
+        super.init(name: name, type: .dwarf, life: 75, weapon: Axe())
     }
     
 }
