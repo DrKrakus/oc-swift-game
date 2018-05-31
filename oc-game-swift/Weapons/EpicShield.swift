@@ -12,6 +12,6 @@ import Foundation
 class EpicShield: EpicWeapon {
     // Init from EpicWeapon
     init(){
-        super.init(damage: 5, healing: 0, maxDamage: 20, maxHealing: 0)
+        super.init(damage: 10, healing: 0, maxDamage: 25, maxHealing: 0)
     }
 }

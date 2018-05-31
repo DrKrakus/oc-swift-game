@@ -230,11 +230,8 @@ class Game {
     
     /// Random chest can pop
     private static func isChestPop(_ hero: Hero?) {
-        // Create a random number between 0 and 99
-        let randomNumber = arc4random_uniform(99)
-        
         // Check if the chest appears
-        guard randomNumber <= 9 else {
+        guard arc4random_uniform(99) <= 99 else {
             // If not, nothing append
             return
         }

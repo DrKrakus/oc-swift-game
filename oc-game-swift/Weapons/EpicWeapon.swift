@@ -21,6 +21,7 @@ class EpicWeapon: Weapon {
         self.maxDamage = maxDamage
         self.maxHealing = maxHealing
         super.init(damage: damage, healing: healing)
+        self.isEpic = true
     }
     
     /// Buff himself from random chest
