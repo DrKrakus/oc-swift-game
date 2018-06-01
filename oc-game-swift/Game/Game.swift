@@ -279,7 +279,16 @@ class Game {
         print("This awesome game is developped by Jérôme Krakus !")
         
         // Return to the start menu
-        Game.start()
+        start()
     }
     
 }
+
+
+
+
+
+
+
+
+
