@@ -19,6 +19,14 @@ class Game {
     static var heroesNames: [String] = []
     // Number of turns
     static var numberOfTurns = 1
+    // Random pop
+    static var canPop: Bool {
+        if arc4random_uniform(99) <= 9 {
+            return true
+        } else {
+            return false
+        }
+    }
     // Number of bonus chest
     static var bonusChest = 0
     // Playing player
@@ -231,7 +239,7 @@ class Game {
     /// Random chest can pop
     private static func isChestPop(_ hero: Hero?) {
         // Check if the chest appears
-        guard arc4random_uniform(99) <= 9 else {
+        guard canPop else {
             // If not, nothing append
             return
         }
