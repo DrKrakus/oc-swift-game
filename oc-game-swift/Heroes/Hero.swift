@@ -104,6 +104,5 @@ class Hero {
                 hero.weapon = EpicShield()
             }
         }
-        
     }
 }
