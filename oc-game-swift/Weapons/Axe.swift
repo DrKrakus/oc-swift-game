@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+// Create the Axe class
+class Axe: Weapon {
+    // Init from Weapon
+    init() {
+        super.init(damage: 20, healing: 0)
+    }
+}

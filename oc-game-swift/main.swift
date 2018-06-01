@@ -8,6 +8,7 @@
 
 import Foundation
 
-
+// Start the game
+Game.start()
 
 

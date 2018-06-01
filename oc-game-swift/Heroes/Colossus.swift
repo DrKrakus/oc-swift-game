@@ -8,3 +8,13 @@
 
 import Foundation
 
+// Create the Colossus class
+class Colossus: Hero {
+    /// Init the Colossus subclass
+    /// - name: String, Name of the colossus
+    init(name: String) {
+        // Take the init of Hero class
+        super.init(name: name, type: .colossus, life: 150, weapon: Shield())
+    }
+    
+}

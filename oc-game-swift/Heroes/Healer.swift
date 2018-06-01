@@ -8,4 +8,45 @@
 
 import Foundation
 
-
+// Create the Healer class
+class Healer: Hero {
+    
+    // MARK: - Methods
+    /// Init the Healer subclass
+    /// - name: String, Name of the healer
+    init(name: String) {
+        // Take the init of Hero class
+        super.init(name: name, type: .healer, life: 125, weapon: Staff())
+    }
+    
+    /// Description for the healer
+    /// - return: String
+    override func description() -> String {
+        // If the healer is dead
+        if self.isDead {
+            // Take the description of Hero class
+            return super.description()
+        } else {
+            // Print his onw description
+            return "\(name) || \(type) -- \(life)/\(maxLife)HP -- healing by \(weapon.healing)"
+        }
+    }
+    
+    /// Heal the targeting hero
+    /// - target: Hero
+    func healHero(_ target: Hero) {
+        // No overheal allowed
+        guard target.life != target.maxLife else {
+            print("You're wasted your turn, he's already full life...")
+            return
+        }
+        
+        // If heal is possible
+        target.life += self.weapon.healing
+        
+        // If the life > maxLife after healing
+        if target.life > target.maxLife {
+            target.life = target.maxLife
+        }
+    }
+}
