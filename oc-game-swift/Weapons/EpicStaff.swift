@@ -8,9 +8,12 @@
 
 import Foundation
 
-// Create the EpicStaff class
+/// Create the EpicStaff class
 class EpicStaff: EpicWeapon {
-    // Init from EpicWeapon
+    
+    // MARK: Methods
+    
+    /// Init from EpicWeapon
     init(){
         super.init(damage: 0, healing: 7, maxDamage: 0, maxHealing: 15)
     }

@@ -8,9 +8,12 @@
 
 import Foundation
 
-// Create the EpicShield class
+/// Create the EpicShield class
 class EpicShield: EpicWeapon {
-    // Init from EpicWeapon
+    
+    // MARK: Methods
+    
+    /// Init from EpicWeapon
     init(){
         super.init(damage: 10, healing: 0, maxDamage: 25, maxHealing: 0)
     }

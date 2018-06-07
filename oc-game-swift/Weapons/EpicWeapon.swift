@@ -8,15 +8,20 @@
 
 import Foundation
 
-// Create the Weapon class
+/// Create the Weapon class
 class EpicWeapon: Weapon {
+    
+    // MARK: Properties
+    
     // Epic weapon can be buffed from random chest
-    // Max damage form buff
+    /// Max damage form buff
     let maxDamage: Int
-    // Max heal from buff
+    /// Max heal from buff
     let maxHealing: Int
     
-    // Init from Weapon
+    // MARK: Methods
+    
+    /// Init from Weapon
     init(damage: Int, healing: Int, maxDamage: Int, maxHealing: Int) {
         self.maxDamage = maxDamage
         self.maxHealing = maxHealing

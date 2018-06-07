@@ -8,24 +8,26 @@
 
 import Foundation
 
-// Create the Player class
+/// Create the Player class
 class Player {
     
     // MARK: - Properties
-    // Player name
+    
+    /// Player name
     var name: String
-    // Player's team
+    /// Player's team
     var heroTeam: [Hero] = []
-    // Max heroes per team
+    /// Max heroes per team
     let maxHeroes = 3
-    // Is the loser
+    /// Is the loser
     var isALoser = false
-    // Hero chosen
+    /// Hero chosen
     var heroChosen: Hero?
-    // Target chosen
+    /// Target chosen
     var targetChosen: Hero?
     
     // MARK: - Methods
+    
     /// Init of Player class
     /// - name: String, Create a player with the name chosen
     init(name: String) {
@@ -110,7 +112,6 @@ class Player {
             }
         }
     }
-    
     
     /// Player have to choose a hero to attack
     /// - player: Player, The one who chose

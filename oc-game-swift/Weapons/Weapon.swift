@@ -8,13 +8,16 @@
 
 import Foundation
 
-// Create the Weapon class
-class Weapon {
-    // Damage
+/// Create the Weapon class
+public class Weapon {
+    
+    // MARK: Properties
+    
+    /// Damage
     var damage: Int
-    // Healing
+    /// Healing
     var healing: Int
-    // Status
+    /// Status
     var isEpic: Bool {
         willSet {
             if self.healing != 0 {
@@ -25,7 +28,9 @@ class Weapon {
         }
     }
     
-    // Init
+    // MARK: Methods
+    
+    /// Init
     init(damage: Int, healing: Int) {
         self.damage = damage
         self.healing = healing

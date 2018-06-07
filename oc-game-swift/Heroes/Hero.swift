@@ -8,18 +8,20 @@
 
 import Foundation
 
-// Create the Hero class
+/// Create the Hero class
 class Hero {
+    
     // MARK: Properties
-    // Name of the hero
+    
+    /// Name of the hero
     var name: String
-    // Type of the hero
+    /// Type of the hero
     var type: HeroType
-    // Weapon
+    /// Weapon
     var weapon: Weapon
-    // Maximum of life
+    /// Maximum of life
     let maxLife: Int
-    // Life of the hero
+    /// Life of the hero
     var life: Int {
         // Before the life change
         willSet {
@@ -38,10 +40,11 @@ class Hero {
             }
         }
     }
-    // Is still alive ?
+    /// Is still alive ?
     var isDead = false
     
     // MARK: - Methods
+    
     /// Init the Hero class
     /// - name: String, The hero's name
     /// - type: HeroType, The type of hero
@@ -54,7 +57,6 @@ class Hero {
         self.maxLife = life
         self.weapon = weapon
     }
-    
     
     /// Description of the hero
     /// - return: String

@@ -8,9 +8,12 @@
 
 import Foundation
 
-// Create the Staff class
+/// Create the Staff class
 class Staff: Weapon {
-    // Init from Weapon
+    
+    // MARK: Methods
+    
+    /// Init from Weapon
     init() {
         super.init(damage: 0, healing: 5)
     }

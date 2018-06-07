@@ -8,9 +8,12 @@
 
 import Foundation
 
-// Create the EpicAxe class
+/// Create the EpicAxe class
 class EpicAxe: EpicWeapon {
-    // Init from EpicWeapon
+    
+    // MARK: Methods
+    
+    /// Init from EpicWeapon
     init(){
         super.init(damage: 25, healing: 0, maxDamage: 40, maxHealing: 0)
     }

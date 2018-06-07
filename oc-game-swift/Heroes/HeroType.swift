@@ -8,7 +8,7 @@
 
 import Foundation
 
-// List the different type of heroes
+/// List the different type of heroes
 enum HeroType {
     case fighter
     case healer

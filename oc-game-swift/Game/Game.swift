@@ -8,31 +8,34 @@
 
 import Foundation
 
-// Create the Game class
+/// Create the Game class
 class Game {
+    
     // MARK: Properties
-    // Array of players
+    
+    /// Array of players
     static var playerList: [Player] = []
-    // The maximum of players per game
+    /// The maximum of players per game
     static let maxPlayers = 2
-    // Array of the heroes names
+    /// Array of the heroes names
     static var heroesNames: [String] = []
-    // Number of turns
+    /// Number of turns
     static var numberOfTurns = 1
-    // Random pop
+    /// Random pop
     static let chestPoucentage = 9
-    // Number of bonus chest
+    /// Number of bonus chest
     static var bonusChest = 0
-    // Playing player
+    /// Playing player
     static var playingPlayer: Player {
         return Game.playerList[numberOfTurns % 2]
     }
-    // Target player
+    /// Target player
     static var targetPlayer: Player {
         return Game.playerList[(numberOfTurns + 1) % 2]
     }
     
     // MARK: - Methods
+    
     /// The starting menu
     static func start() {
         // Print the menu
@@ -216,7 +219,6 @@ class Game {
                 }
             }
             
-            
             // Else, adding a turn and continue the fight
             numberOfTurns += 1
             
@@ -257,7 +259,7 @@ class Game {
     /// The stats of the game
     static func showEndStats() {
         // Take the winner from playerList
-        let winner = Game.playerList.filter { $0.isALoser == false }
+        let winner = Game.playerList.filter { !$0.isALoser }
         
         // Print the message
         print("""
@@ -281,7 +283,6 @@ class Game {
         // Return to the start menu
         start()
     }
-    
 }
 
 

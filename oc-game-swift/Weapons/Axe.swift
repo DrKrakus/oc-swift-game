@@ -8,9 +8,12 @@
 
 import Foundation
 
-// Create the Axe class
+/// Create the Axe class
 class Axe: Weapon {
-    // Init from Weapon
+    
+    // MARK: Methods
+    
+    /// Init from Weapon
     init() {
         super.init(damage: 20, healing: 0)
     }

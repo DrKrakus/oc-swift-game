@@ -8,10 +8,11 @@
 
 import Foundation
 
-// Create the Healer class
+/// Create the Healer class
 class Healer: Hero {
     
     // MARK: - Methods
+    
     /// Init the Healer subclass
     /// - name: String, Name of the healer
     init(name: String) {
