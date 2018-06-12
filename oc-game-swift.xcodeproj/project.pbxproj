@@ -105,12 +105,8 @@
 		7F65133C20AEEFCE001AC156 /* Weapons */ = {
 			isa = PBXGroup;
 			children = (
+				7F65EE2720CFD4D000D7B18E /* Epic */,
 				7F65133D20AEF049001AC156 /* Axe.swift */,
-				7F697DBB20BBF4D70006EBB2 /* EpicAxe.swift */,
-				7F697DBD20BBF4E90006EBB2 /* EpicStaff.swift */,
-				7F697DBF20BBF4FB0006EBB2 /* EpicSword.swift */,
-				7F697DC120BBF50A0006EBB2 /* EpicShield.swift */,
-				7F697DC520BBF8740006EBB2 /* EpicWeapon.swift */,
 				7F65135020AF00CF001AC156 /* Sword.swift */,
 				7F65135220AF00E7001AC156 /* Shield.swift */,
 				7F65135420AF00F2001AC156 /* Staff.swift */,
@@ -146,6 +142,18 @@
 				7F65135720AF0115001AC156 /* Game.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		7F65EE2720CFD4D000D7B18E /* Epic */ = {
+			isa = PBXGroup;
+			children = (
+				7F697DBB20BBF4D70006EBB2 /* EpicAxe.swift */,
+				7F697DBD20BBF4E90006EBB2 /* EpicStaff.swift */,
+				7F697DBF20BBF4FB0006EBB2 /* EpicSword.swift */,
+				7F697DC120BBF50A0006EBB2 /* EpicShield.swift */,
+				7F697DC520BBF8740006EBB2 /* EpicWeapon.swift */,
+			);
+			path = Epic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

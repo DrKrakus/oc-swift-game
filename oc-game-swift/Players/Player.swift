@@ -113,10 +113,29 @@ class Player {
         }
     }
     
+    /// Player choose a target to attack or heal
+    func chooseTarget() {
+        if self.heroChosen is Healer {
+            // Guard for selection of the target to heal
+            guard let target = self.chooseHeroFromYourTeam() else {
+                return
+            }
+            // Assign value to targetchosen
+            self.targetChosen = target
+        } else {
+            // Guard for selection target to attack
+            guard let target = self.chooseHeroToAttack(Game.targetPlayer) else {
+                return
+            }
+            // Assign value to targetchosen
+            self.targetChosen = target
+        }
+    }
+    
     /// Player have to choose a hero to attack
     /// - player: Player, The one who chose
     /// - return: Hero?, The selected hero
-    func chooseHeroToAttack(_ player: Player) -> Hero? {
+    private func chooseHeroToAttack(_ player: Player) -> Hero? {
         // While no hero chosen
         while true {
             // Print the message

@@ -172,23 +172,9 @@ class Game {
             isChestPop(playingPlayer.heroChosen)
             
             // Playing player choose a target to attack or heal
-            if playingPlayer.heroChosen is Healer {
-                // Guard for selection of the target to heal
-                guard let target = playingPlayer.chooseHeroFromYourTeam() else {
-                    return
-                }
-                // Assign value to targetchosen
-                playingPlayer.targetChosen = target
-            } else {
-                // Guard for selection target to attack
-                guard let target = playingPlayer.chooseHeroToAttack(targetPlayer) else {
-                    return
-                }
-                // Assign value to targetchosen
-                playingPlayer.targetChosen = target
-            }
+            playingPlayer.chooseTarget()
             
-            // heroChosen Attack or Heal
+            // Then heroChosen Attack or Heal the target
             if let hero = playingPlayer.heroChosen as? Healer {
                 // Unwrap the targetChosen
                 guard let target = playingPlayer.targetChosen else {
