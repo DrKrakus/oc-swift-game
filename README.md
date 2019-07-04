@@ -1,4 +1,4 @@
-# Créer un jeu en swift en ligne de commande
+# Créer un jeu swift en ligne de commande
 
 ## Compétences à aquérir :
 
